@@ -4,8 +4,19 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cst_338_project_2_su_25.entities.Favorites;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private Favorites favorite;
+
+    public MainActivity() {}
+
+    public MainActivity(int contentLayoutId, Favorites favorite) {
+        super(contentLayoutId);
+        this.favorite = favorite;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
