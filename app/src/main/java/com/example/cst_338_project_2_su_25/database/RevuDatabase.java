@@ -40,4 +40,6 @@ public abstract class RevuDatabase extends RoomDatabase{
     }
     public abstract FavoritesDAO favoritesDAO();
 
+    public abstract UserDao userDao();
+
 }
