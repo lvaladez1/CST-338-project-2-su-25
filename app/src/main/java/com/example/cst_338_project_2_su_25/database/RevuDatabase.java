@@ -8,11 +8,13 @@ import androidx.room.RoomDatabase;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
+import com.example.cst_338_project_2_su_25.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Favorites.class}, version = 1, exportSchema = false)
+//@Database(entities = {Favorites.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Favorites.class}, version = 1, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
 
     private static final String DATABASE_NAME = "Revudatabase";
