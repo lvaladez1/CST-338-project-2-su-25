@@ -1,10 +1,14 @@
 package com.example.cst_338_project_2_su_25.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.User;
+
+import java.util.List;
 
 /**
  * Data Access Object (DAO) for User entity.
@@ -27,6 +31,7 @@ public interface UserDao {
      * @param password The password of the user.
      * @return The User object if found, null otherwise.
      */
-    @Query("SELECT * FROM User WHERE username = :username AND password = :password LIMIT 1")
+    @Query("SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1")
     User userLogin(String username, String password);
+
 }

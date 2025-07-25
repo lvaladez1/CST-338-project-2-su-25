@@ -12,4 +12,8 @@
     <string name="write_a_review">Write a Review</string>
     <string name="view_favorites">View Favorites</string>
     <string name="logout">Logout</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="movies">Movies</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_favorites_added_yet">No favorites added yet!</string>
 </resources>

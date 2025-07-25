@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     private Favorites favorite;
