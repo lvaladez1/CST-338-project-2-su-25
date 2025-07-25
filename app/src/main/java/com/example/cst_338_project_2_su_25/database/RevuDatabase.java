@@ -2,9 +2,11 @@ package com.example.cst_338_project_2_su_25.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
@@ -20,7 +22,7 @@ public abstract class RevuDatabase extends RoomDatabase{
     private static volatile RevuDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
     public static RevuDatabase getDatabase(final Context context ){
