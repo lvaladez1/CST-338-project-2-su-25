@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

@@ -14,7 +14,7 @@ import androidx.room.PrimaryKey;
         foreignKeys = @ForeignKey(entity = User.class, //connects foreign key to favorites table
             parentColumns = "userId",
             childColumns = "userId",
-            onDelete = ForeignKey.CASCADE //if user is deleted, so are there associated favorites
+            onDelete = ForeignKey.CASCADE //if user is deleted, so are their associated favorites
         )
 )
 

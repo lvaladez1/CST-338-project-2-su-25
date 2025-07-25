@@ -7,6 +7,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+import com.example.cst_338_project_2_su_25.entities.User;
 
 
 
@@ -31,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
         openFavoritesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
             startActivity(intent);
+        });
+
+        RevuDatabase db = RevuDatabase.getDatabase(getApplicationContext());
+
+        User testUser = new User();
+        testUser.username = "demo_user";
+        testUser.password = "password";
+        testUser.isAdmin = false;
+
+        RevuDatabase.databaseWriteExecutor.execute(() -> {
+            db.userDao().insertUser(testUser);
         });
 
     }
