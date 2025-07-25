@@ -16,4 +16,8 @@
     <string name="movies">Movies</string>
     <string name="favorites">Favorites</string>
     <string name="no_favorites_added_yet">No favorites added yet!</string>
+    <string name="filter_here">Filter Here</string>
+    <string name="filter_favorites">Filter Favorites</string>
+    <string name="Tv_shows">Tv Shows</string>
+    <string name="Movies">Movies</string>
 </resources>
