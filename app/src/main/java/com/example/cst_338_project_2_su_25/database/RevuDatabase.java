@@ -2,22 +2,21 @@ package com.example.cst_338_project_2_su_25.database;
 
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
-import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
+import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Favorites.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Favorites.class, MediaTitle.class}, version = 2, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
 
+    public static final String MEDIA_TABLE = "mediatable";
     private static final String DATABASE_NAME = "Revudatabase";
     private static volatile RevuDatabase INSTANCE;
 
@@ -44,5 +43,7 @@ public abstract class RevuDatabase extends RoomDatabase{
     public abstract FavoritesDAO favoritesDAO();
 
     public abstract UserDao userDao();
+
+    public abstract MediaTitleDAO mediaTitleDao();
 
 }
