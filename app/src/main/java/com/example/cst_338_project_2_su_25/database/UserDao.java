@@ -32,7 +32,7 @@ public interface UserDao {
      * @param password The password of the user.
      * @return The User object if found, null otherwise.
      */
-    @Query("SELECT * FROM user WHERE username = :username AND password = :password LIMIT 1")
+    @Query("SELECT * FROM user WHERE LOWER(username) = LOWER(:username) AND LOWER(password) = LOWER(:password) LIMIT 1")
     User userLogin(String username, String password);
 
     @Query("SELECT * FROM user WHERE username = :username LIMIT 1")

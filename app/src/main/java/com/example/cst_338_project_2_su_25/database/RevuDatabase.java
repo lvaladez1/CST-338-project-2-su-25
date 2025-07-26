@@ -50,4 +50,6 @@ public abstract class RevuDatabase extends RoomDatabase{
 
     public abstract ReviewDao reviewDao();
 
+
+
 }

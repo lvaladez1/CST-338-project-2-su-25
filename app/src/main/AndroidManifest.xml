@@ -27,6 +27,7 @@
         <activity android:name=".FilterFavoritesActivity" />
         <activity android:name=".ReviewHistoryActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".AdminCreateUserActivity"/>
     </application>
 
 </manifest>

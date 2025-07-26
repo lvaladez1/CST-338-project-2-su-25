@@ -14,18 +14,19 @@ public class User {
     public String password;
     /** Flag for identifying admin users. */
     public boolean isAdmin;
-    public int getUserId() {
-        return userId;
-    }
 
     @SuppressWarnings("unused")
     public User(){
         // Default constructor for Room
     }
-    public User(String username, String password) {
+    public User(String username, String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
-        this.isAdmin = false; // Default to non-admin
+        this.isAdmin = isAdmin;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }
 

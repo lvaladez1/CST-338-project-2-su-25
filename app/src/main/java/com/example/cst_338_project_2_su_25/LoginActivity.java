@@ -40,13 +40,14 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = usernameInput.getText().toString();
-                String password = passwordInput.getText().toString();
+                String username = usernameInput.getText().toString().trim().toLowerCase();
+                String password = passwordInput.getText().toString().trim();
                 ExecutorService executor = Executors.newSingleThreadExecutor();
                 executor.execute(() -> {
                     User user = userDao.userLogin(username, password);
                     runOnUiThread(() -> {
                         if (user != null) {
+                            Log.d("LOGIN SUCCESS", "Found user: " + user.username + ", isAdmin: " + user.isAdmin);
                             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putInt("userId", user.getUserId());
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
+                            Log.d("LOGIN FAILED", "No user found with username: " + username + " and password: " + password);
                             Toast.makeText(LoginActivity.this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
                         }
                     });

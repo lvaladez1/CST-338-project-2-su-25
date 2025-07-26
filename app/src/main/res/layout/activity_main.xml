@@ -82,6 +82,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/view_my_reviews" />
+        <Button
+            android:id="@+id/createUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_user"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </FrameLayout>
