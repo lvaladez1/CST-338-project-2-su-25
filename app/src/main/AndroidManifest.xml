@@ -28,6 +28,7 @@
         <activity android:name=".ReviewHistoryActivity"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".AdminCreateUserActivity"/>
+        <activity android:name=".AdminViewUsersActivity"/>
     </application>
 
 </manifest>
