@@ -48,7 +48,11 @@ public class LoginActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         if (user != null) {
                             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
-                            prefs.edit().putInt("userId", user.getUserId()).apply();
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putInt("userId", user.getUserId());
+                            editor.putBoolean("isAdmin", user.isAdmin);
+                            editor.apply();
+
 
                             Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                             //startActivity(new Intent(LoginActivity.this, MainActivity.class));

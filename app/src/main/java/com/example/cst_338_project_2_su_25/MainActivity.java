@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView adminLabel = findViewById(R.id.adminLabel);
+        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        boolean isAdmin = prefs.getBoolean("isAdmin", false);
+        if(isAdmin) {
+            adminLabel.setVisibility(View.VISIBLE);
+        }
+
         Button logoutButton = findViewById(R.id.logoutButton);
 
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);

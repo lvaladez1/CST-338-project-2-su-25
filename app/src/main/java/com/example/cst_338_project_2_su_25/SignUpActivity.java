@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Button signupButton, backToLoginButton;
     private RevuDatabase db;
     private UserDao userDao;
+    CheckBox adminCheckbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         signupButton = findViewById(R.id.signupButton);
         backToLoginButton = findViewById(R.id.backToLoginButton);
+        adminCheckbox = findViewById(R.id.adminCheckbox);
 
         db = RevuDatabase.getDatabase(getApplicationContext());
         userDao = db.userDao();
@@ -47,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
                     User newUser = new User();
                     newUser.username = username;
                     newUser.password = password;
-                    newUser.isAdmin = false;
+                    newUser.isAdmin = adminCheckbox.isChecked();
 
                     ExecutorService executor = Executors.newSingleThreadExecutor();
                     executor.execute(() -> {
