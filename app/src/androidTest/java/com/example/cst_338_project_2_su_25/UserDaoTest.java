@@ -70,6 +70,9 @@ public class UserDaoTest {
         assertFalse(result.isAdmin);
     }
 
+    /**
+     * Tests the retrieval of a user by username and verifies that the user exists.
+     */
     @After
     public void closeDb() {
         db.close();
