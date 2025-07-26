@@ -1,10 +1,16 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+import com.example.cst_338_project_2_su_25.entities.User;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,8 +27,29 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
+        Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
+
+        openFavoritesButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+        });
+
+        RevuDatabase db = RevuDatabase.getDatabase(getApplicationContext());
+
+        User testUser = new User();
+        testUser.username = "demo_user";
+        testUser.password = "password";
+        testUser.isAdmin = false;
+
+        RevuDatabase.databaseWriteExecutor.execute(() -> {
+            User existingUser = db.userDao().getUserByUsername("demo_user");
+            if (existingUser == null) {
+                db.userDao().insertUser(testUser);
+            }
+
+        });
 
     }
 }

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">CST-338-project-2-su-25</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="username1">Username</string>
+    <string name="password2">Password</string>
+    <string name="sign_up1">Sign Up</string>
+    <string name="back_to_login">Back to Login</string>
+    <string name="welcome_to_revu">Welcome to Revu!</string>
+    <string name="write_a_review">Write a Review</string>
+    <string name="view_favorites">View Favorites</string>
+    <string name="logout">Logout</string>
+    <string name="tv_shows">Tv Shows</string>
+    <string name="movies">Movies</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_favorites_added_yet">No favorites added yet!</string>
+    <string name="filter_here">Filter Here</string>
+    <string name="filter_favorites">Filter Favorites</string>
+    <string name="Tv_shows">Tv Shows</string>
+    <string name="Movies">Movies</string>
 </resources>

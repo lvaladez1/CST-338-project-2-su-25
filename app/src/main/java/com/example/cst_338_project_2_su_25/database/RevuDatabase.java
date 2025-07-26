@@ -7,19 +7,21 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
-import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
+import com.example.cst_338_project_2_su_25.entities.MediaTitle;
+import com.example.cst_338_project_2_su_25.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Favorites.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Favorites.class, MediaTitle.class}, version = 4, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
 
+    public static final String MEDIA_TABLE = "MEDIA_TABLE";
     private static final String DATABASE_NAME = "Revudatabase";
     private static volatile RevuDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
     public static RevuDatabase getDatabase(final Context context ){
@@ -39,5 +41,9 @@ public abstract class RevuDatabase extends RoomDatabase{
         return INSTANCE;
     }
     public abstract FavoritesDAO favoritesDAO();
+
+    public abstract UserDao userDao();
+
+    public abstract MediaTitleDAO mediaTitleDAO();
 
 }
