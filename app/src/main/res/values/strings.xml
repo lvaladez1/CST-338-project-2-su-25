@@ -40,4 +40,6 @@
     <string name="user_list_tap_to_delete">User List (Tap to delete)</string>
     <string name="view_delete_users">View/Delete Users</string>
     <string name="go_back_to_menu">Go Back to Menu</string>
+    <string name="welcome_to_revu1">Welcome to Revu!</string>
+    <string name="app_logo">App logo</string>
 </resources>
