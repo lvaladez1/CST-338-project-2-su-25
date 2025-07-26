@@ -21,6 +21,12 @@ public class UserDaoTest {
     private UserDao userDao;
     private RevuDatabase db;
 
+    /**
+     * This class tests the UserDao methods for inserting and retrieving users.
+     * It checks if the user can be inserted and logged in with correct credentials,
+     * and verifies that incorrect credentials return null or throw an exception.
+     * It also checks that a user is not an admin by default.
+     */
     @Before
     public void setUp() {
         Context context = ApplicationProvider.getApplicationContext();
