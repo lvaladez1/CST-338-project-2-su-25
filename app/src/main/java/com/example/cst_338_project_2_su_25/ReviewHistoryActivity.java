@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+
 import java.util.List;
 
 public class ReviewHistoryActivity extends AppCompatActivity {
