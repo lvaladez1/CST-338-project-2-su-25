@@ -17,4 +17,15 @@ public class User {
     public int getUserId() {
         return userId;
     }
+
+    @SuppressWarnings("unused")
+    public User(){
+        // Default constructor for Room
+    }
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.isAdmin = false; // Default to non-admin
+    }
 }
+
