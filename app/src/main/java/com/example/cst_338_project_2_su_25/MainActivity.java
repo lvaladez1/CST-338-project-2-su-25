@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
-import com.example.cst_338_project_2_su_25.ReviewHistoryActivity;
 
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Button logoutButton = findViewById(R.id.logoutButton);
 
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
         Button viewReviewsButton = findViewById(R.id.btnViewReviews);
+
+        String username = getIntent().getStringExtra("username");
+
+        TextView usernameText = findViewById(R.id.usernameTextView);
+        if(username != null) {
+            usernameText.setText(getString(R.string.welcome_user, username));
+        }
 
 
 
