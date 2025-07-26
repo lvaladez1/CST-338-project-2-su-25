@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST338project2su25">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,6 +26,7 @@
 
         <activity android:name=".FilterFavoritesActivity" />
         <activity android:name=".ReviewHistoryActivity"/>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
