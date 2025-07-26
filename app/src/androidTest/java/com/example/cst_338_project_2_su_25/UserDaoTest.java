@@ -47,6 +47,9 @@ public class UserDaoTest {
         assertNotNull(result);
     }
 
+    /**
+     * Tests the insertion of a user and verifies that the user cannot log in with incorrect credentials.
+     */
     @Test
     public void loginWithIncorrectCredentials() {
         User user = new User("wrongpassuser", "correctpassword");
