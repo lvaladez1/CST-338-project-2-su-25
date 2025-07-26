@@ -37,4 +37,7 @@
     <string name="make_admin">Make Admin</string>
     <string name="create_user">Create User</string>
     <string name="create_new_user">Create New User</string>
+    <string name="user_list_tap_to_delete">User List (Tap to delete)</string>
+    <string name="view_delete_users">View/Delete Users</string>
+    <string name="go_back_to_menu">Go Back to Menu</string>
 </resources>
