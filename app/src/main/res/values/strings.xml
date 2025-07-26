@@ -32,4 +32,8 @@
     <string name="review_history1">Review History</string>
     <string name="register_as_admin">Register as Admin</string>
     <string name="admin">ADMIN</string>
+    <string name="new_username">New Username</string>
+    <string name="new_password">New Password</string>
+    <string name="make_admin">Make Admin</string>
+    <string name="create_user">Create User</string>
 </resources>
