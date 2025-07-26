@@ -30,12 +30,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        String loggedInUser = prefs.getString("loggedInUser", null);
+        Log.d("MainActivity", "Logged in user: " + loggedInUser);
+        if(loggedInUser == null) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         TextView adminLabel = findViewById(R.id.adminLabel);
         Button createUserButton = findViewById(R.id.createUserButton);
-        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("appPrefs", MODE_PRIVATE);
         boolean isAdmin = prefs.getBoolean("isAdmin", false);
         if(isAdmin) {
             adminLabel.setVisibility(View.VISIBLE);
