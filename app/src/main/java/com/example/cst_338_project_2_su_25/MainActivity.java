@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        /** * Logout button functionality
+         * Clears shared preferences and navigates to LoginActivity
+         */
         logoutButton.setOnClickListener(view -> {;
             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
             prefs.edit().clear().apply();
