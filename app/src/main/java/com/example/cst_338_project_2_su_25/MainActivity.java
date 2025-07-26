@@ -10,6 +10,7 @@ import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
 
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +44,11 @@ public class MainActivity extends AppCompatActivity {
         testUser.isAdmin = false;
 
         RevuDatabase.databaseWriteExecutor.execute(() -> {
-            db.userDao().insertUser(testUser);
+            User existingUser = db.userDao().getUserByUsername("demo_user");
+            if (existingUser == null) {
+                db.userDao().insertUser(testUser);
+            }
+
         });
 
     }
