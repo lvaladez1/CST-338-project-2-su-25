@@ -25,4 +25,9 @@
     <string name="this_is_a_sample_review_text">This is a sample review text.</string>
     <string name="favorite">Favorite</string>
     <string name="view_my_reviews">View my Reviews</string>
+    <string name="welcome">Welcome!</string>
+    <string name = "welcome_user">Welcome, %1$s!</string>
+    <string name="welcome1">Welcome!</string>
+    <string name="review_history">Review History</string>
+    <string name="review_history1">Review History</string>
 </resources>
