@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.cst_338_project_2_su_25.entities.Review;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.Review;
