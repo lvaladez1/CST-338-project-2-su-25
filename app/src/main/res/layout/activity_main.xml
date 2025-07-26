@@ -15,6 +15,18 @@
         android:layout_marginEnd="16dp"
         android:layout_gravity="top|end" />
 
+    <TextView
+        android:id="@+id/adminLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin"
+        android:textColor="@color/red_dark"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="top|start"
+        />
+
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
@@ -70,6 +82,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/view_my_reviews" />
+        <Button
+            android:id="@+id/createUserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_new_user"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/viewUsersButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_delete_users"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </FrameLayout>

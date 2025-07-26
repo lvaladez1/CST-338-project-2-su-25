@@ -30,4 +30,14 @@
     <string name="welcome1">Welcome!</string>
     <string name="review_history">Review History</string>
     <string name="review_history1">Review History</string>
+    <string name="register_as_admin">Register as Admin</string>
+    <string name="admin">ADMIN</string>
+    <string name="new_username">New Username</string>
+    <string name="new_password">New Password</string>
+    <string name="make_admin">Make Admin</string>
+    <string name="create_user">Create User</string>
+    <string name="create_new_user">Create New User</string>
+    <string name="user_list_tap_to_delete">User List (Tap to delete)</string>
+    <string name="view_delete_users">View/Delete Users</string>
+    <string name="go_back_to_menu">Go Back to Menu</string>
 </resources>

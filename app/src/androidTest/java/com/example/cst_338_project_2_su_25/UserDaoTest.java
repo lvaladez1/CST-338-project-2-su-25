@@ -41,7 +41,7 @@ public class UserDaoTest {
      */
     @Test
     public void insertUserAndCorrectLogin() {
-        User user = new User("testuser", "password123");
+        User user = new User("testuser", "password123", false);
         userDao.insertUser(user);
         User result = userDao.userLogin("testuser", "password123");
         assertNotNull(result);
@@ -52,7 +52,7 @@ public class UserDaoTest {
      */
     @Test
     public void loginWithIncorrectCredentials() {
-        User user = new User("wrongpassuser", "correctpassword");
+        User user = new User("wrongpassuser", "correctpassword", false);
         userDao.insertUser(user);
         User result = userDao.userLogin("wrongpassuser", "incorrectpassword");
         assertNull(result); // Should return null or throw an exception, depending on implementation
@@ -63,7 +63,7 @@ public class UserDaoTest {
      */
     @Test
     public void userIsNotAdminByDefault() {
-        User user = new User("defaultUser", "randomPassword");
+        User user = new User("defaultUser", "randomPassword", false);
         userDao.insertUser(user);
         User result = userDao.userLogin("defaultUser", "randomPassword");
         assertNotNull(result);

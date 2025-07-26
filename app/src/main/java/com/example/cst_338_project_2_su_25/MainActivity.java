@@ -33,6 +33,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView adminLabel = findViewById(R.id.adminLabel);
+        Button createUserButton = findViewById(R.id.createUserButton);
+        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        boolean isAdmin = prefs.getBoolean("isAdmin", false);
+        if(isAdmin) {
+            adminLabel.setVisibility(View.VISIBLE);
+            createUserButton.setVisibility(View.VISIBLE);
+            createUserButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, AdminCreateUserActivity.class);
+                startActivity(intent);
+            });
+        }
+        Button viewUsersButton = findViewById(R.id.viewUsersButton);
+        if(isAdmin) {
+            viewUsersButton.setVisibility(View.VISIBLE);
+            viewUsersButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, AdminViewUsersActivity.class);
+                startActivity(intent);
+            });
+        }
+
         Button logoutButton = findViewById(R.id.logoutButton);
 
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
