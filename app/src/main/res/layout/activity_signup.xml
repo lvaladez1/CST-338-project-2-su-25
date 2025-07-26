@@ -8,13 +8,13 @@
 
     <EditText
         android:id="@+id/usernameInput"
-        android:hint="@string/username1"
+        android:hint="@string/create_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName" />
     <EditText
         android:id="@+id/passwordInput"
-        android:hint="@string/password2"
+        android:hint="@string/create_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword" />

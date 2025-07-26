@@ -38,8 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = usernameInput.getText().toString().trim();
-                String password = passwordInput.getText().toString().trim();
+                String username = usernameInput.getText().toString().trim().toLowerCase();
+                String password = passwordInput.getText().toString().trim().toLowerCase();
                 if(username.isEmpty() || password.isEmpty()){
                     Toast.makeText(SignUpActivity.this, "Please fill out all fields.", Toast.LENGTH_SHORT).show();
                 }
@@ -51,7 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                     ExecutorService executor = Executors.newSingleThreadExecutor();
                     executor.execute(() -> {
-                        User existingUser = userDao.getUserByUsername(username);
+                        User existingUser = userDao.getUserByUsername(username.toLowerCase());
                         if(existingUser == null) {
                             userDao.insertUser(newUser);
                             runOnUiThread(() -> {

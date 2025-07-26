@@ -30,4 +30,6 @@
     <string name="welcome1">Welcome!</string>
     <string name="review_history">Review History</string>
     <string name="review_history1">Review History</string>
+    <string name="create_username">Create Username</string>
+    <string name="create_password">Create Password</string>
 </resources>
