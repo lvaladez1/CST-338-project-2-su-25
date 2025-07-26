@@ -14,4 +14,7 @@ public class User {
     public String password;
     /** Flag for identifying admin users. */
     public boolean isAdmin;
+    public int getUserId() {
+        return userId;
+    }
 }

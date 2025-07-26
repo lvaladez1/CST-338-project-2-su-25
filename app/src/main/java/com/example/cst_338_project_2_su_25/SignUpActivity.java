@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.database.UserDao;
+import com.example.cst_338_project_2_su_25.entities.User;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SignUpActivity extends AppCompatActivity {
     private EditText usernameInput, passwordInput;
@@ -37,9 +41,30 @@ public class SignUpActivity extends AppCompatActivity {
                 String username = usernameInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
                 if(username.isEmpty() || password.isEmpty()){
-                    Toast.makeText(SignUpActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                    finish();
+                    Toast.makeText(SignUpActivity.this, "Please fill out all fields.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    User newUser = new User();
+                    newUser.username = username;
+                    newUser.password = password;
+                    newUser.isAdmin = false;
+
+                    ExecutorService executor = Executors.newSingleThreadExecutor();
+                    executor.execute(() -> {
+                        User existingUser = userDao.getUserByUsername(username);
+                        if(existingUser == null) {
+                            userDao.insertUser(newUser);
+                            runOnUiThread(() -> {
+                                Toast.makeText(SignUpActivity.this, "Account created!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                finish();
+                            });
+                        } else {
+                            runOnUiThread(() -> {
+                                Toast.makeText(SignUpActivity.this, "Username already exists. Please choose another.", Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    });
                 }
             }
         });
