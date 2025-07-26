@@ -20,4 +20,9 @@
     <string name="filter_favorites">Filter Favorites</string>
     <string name="Tv_shows">Tv Shows</string>
     <string name="Movies">Movies</string>
+    <string name="sample_title">Sample Title</string>
+    <string name="rating_5_0">Rating: 5.0</string>
+    <string name="this_is_a_sample_review_text">This is a sample review text.</string>
+    <string name="favorite">Favorite</string>
+    <string name="view_my_reviews">View my Reviews</string>
 </resources>

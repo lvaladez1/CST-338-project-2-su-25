@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
+import com.example.cst_338_project_2_su_25.ReviewHistoryActivity;
 
 import java.util.List;
 
@@ -33,13 +34,20 @@ public class MainActivity extends AppCompatActivity {
 
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
+      ReviewHistoryUI
+        Button viewReviewsButton = findViewById(R.id.btnViewReviews);
         Button logoutButton = findViewById(R.id.btnLogout);
+      master
 
         openFavoritesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
             startActivity(intent);
         });
 
+      ReviewHistoryUI
+        viewReviewsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ReviewHistoryActivity.class);
+            startActivity(intent);
         /** * Logout button functionality
          * Clears shared preferences and navigates to LoginActivity
          */
@@ -53,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+                                                 master
         });
 
         RevuDatabase db = RevuDatabase.getDatabase(getApplicationContext());

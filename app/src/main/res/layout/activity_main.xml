@@ -41,5 +41,11 @@
         android:gravity="center"
         android:backgroundTint="@android:color/holo_red_dark"
         android:text="@string/logout"/>
+    <Button
+        android:id="@+id/btnViewReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_my_reviews"
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>
