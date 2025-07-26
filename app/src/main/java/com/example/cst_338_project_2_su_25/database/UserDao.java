@@ -2,6 +2,7 @@ package com.example.cst_338_project_2_su_25.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -25,6 +26,9 @@ public interface UserDao {
     @Insert
     void insertUser(User user);
 
+    @Delete
+    void deleteUser(User user);
+
     /**
      * Retrieves a user from the User table based on username and password.
      *
@@ -37,6 +41,9 @@ public interface UserDao {
 
     @Query("SELECT * FROM user WHERE username = :username LIMIT 1")
     User getUserByUsername(String username);
+
+    @Query("SELECT * FROM user")
+    List<User> getAllUsers();
 
 
 }
