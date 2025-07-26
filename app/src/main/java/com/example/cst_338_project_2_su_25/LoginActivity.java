@@ -27,6 +27,16 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        String loggedInUser = prefs.getString("loggedInUser", null);
+        if(loggedInUser != null) {
+            Log.d("LoginActivity", "User already logged in: " + loggedInUser);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("username", loggedInUser);
+            startActivity(intent);
+            finish();
+            return;
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -52,7 +62,9 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putInt("userId", user.getUserId());
                             editor.putBoolean("isAdmin", user.isAdmin);
+                            editor.putString("loggedInUser", user.username);
                             editor.apply();
+
 
 
                             Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
