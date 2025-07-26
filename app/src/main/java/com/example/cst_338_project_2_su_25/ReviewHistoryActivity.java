@@ -11,6 +11,8 @@ import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.Review;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ReviewHistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -27,7 +29,12 @@ public class ReviewHistoryActivity extends AppCompatActivity {
         int userId = getSharedPreferences("appPrefs", MODE_PRIVATE)
                 .getInt("userId", -1);
 
-        List<Review> reviews = reviewDao.getReviewsForUser(userId);
-        recyclerView.setAdapter(new ReviewAdapter(reviews));
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(() -> {
+            List<Review> reviews = reviewDao.getReviewsForUser(userId);
+            runOnUiThread(() -> {
+                recyclerView.setAdapter(new ReviewAdapter(reviews));
+            });
+        });
     }
 }
