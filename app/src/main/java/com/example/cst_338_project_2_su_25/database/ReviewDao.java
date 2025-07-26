@@ -9,6 +9,11 @@ import java.util.List;
 
 @Dao
 public interface ReviewDao {
+    /**
+     * Inserts a new review into the database.
+     *
+     * @param userId The review to be inserted.
+     */
     @Query("SELECT * FROM Review WHERE userId = :userId")
     List<Review> getReviewsByUserId(int userId);
 }
