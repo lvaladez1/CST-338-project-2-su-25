@@ -36,6 +36,9 @@ public class UserDaoTest {
         userDao = db.userDao();
     }
 
+    /**
+     * Tests the insertion of a user and verifies that the user can log in with correct credentials.
+     */
     @Test
     public void insertUserAndCorrectLogin() {
         User user = new User("testuser", "password123");
