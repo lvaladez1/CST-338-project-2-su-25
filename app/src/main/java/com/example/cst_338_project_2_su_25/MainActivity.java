@@ -45,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
+        Button viewUsersButton = findViewById(R.id.viewUsersButton);
+        if(isAdmin) {
+            viewUsersButton.setVisibility(View.VISIBLE);
+            viewUsersButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, AdminViewUsersActivity.class);
+                startActivity(intent);
+            });
+        }
 
         Button logoutButton = findViewById(R.id.logoutButton);
 
