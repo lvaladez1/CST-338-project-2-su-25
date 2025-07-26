@@ -13,10 +13,10 @@ import com.example.cst_338_project_2_su_25.entities.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Favorites.class, MediaTitle.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, Favorites.class, MediaTitle.class}, version = 4, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
 
-    public static final String MEDIA_TABLE = "mediatable";
+    public static final String MEDIA_TABLE = "MEDIA_TABLE";
     private static final String DATABASE_NAME = "Revudatabase";
     private static volatile RevuDatabase INSTANCE;
 
@@ -44,6 +44,6 @@ public abstract class RevuDatabase extends RoomDatabase{
 
     public abstract UserDao userDao();
 
-    public abstract MediaTitleDAO mediaTitleDao();
+    public abstract MediaTitleDAO mediaTitleDAO();
 
 }

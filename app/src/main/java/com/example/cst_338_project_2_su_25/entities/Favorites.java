@@ -11,11 +11,18 @@ import androidx.room.PrimaryKey;
  * If the user is deleted from the database, all of their favorites will also be deleted automatically.
  */
 @Entity(tableName = "FAVORITES_TABLE",
-        foreignKeys = @ForeignKey(entity = User.class, //connects foreign key to favorites table
-            parentColumns = "userId",
-            childColumns = "userId",
-            onDelete = ForeignKey.CASCADE //if user is deleted, so are their associated favorites
-        )
+        foreignKeys = {@ForeignKey(entity = User.class, //connects foreign key user to favorites table
+                parentColumns = "userId",
+                childColumns = "userId",
+                onDelete = ForeignKey.CASCADE //if user is deleted, so are their associated favorites
+        ),
+                @ForeignKey(
+                        entity = MediaTitle.class, //connects foreign key mediaTitle to favorites table
+                        parentColumns = "mediaTitleId",
+                        childColumns = "mediaTitleId",
+                        onDelete = ForeignKey.CASCADE
+                )
+        }
 )
 
 public class Favorites {
@@ -32,5 +39,7 @@ public class Favorites {
      * This field serves as a foreign key referencing the User entity.
      */
     public int userId;
+
+    public int mediaTitleId;
 
 }

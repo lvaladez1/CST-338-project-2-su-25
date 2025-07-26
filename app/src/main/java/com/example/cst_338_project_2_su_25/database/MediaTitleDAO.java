@@ -43,4 +43,7 @@ public interface MediaTitleDAO {
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE)
     List<MediaTitle> getAllMediaTitles();
 
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE mediaTitleId = :id")
+    MediaTitle getMediaTitleById(int id);
+
 }

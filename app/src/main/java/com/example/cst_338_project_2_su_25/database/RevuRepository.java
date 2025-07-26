@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.cst_338_project_2_su_25.entities.Favorites;
+import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -13,6 +14,8 @@ import java.util.concurrent.Executors;
 public class RevuRepository {
 
     private final FavoritesDAO favoritesDAO;
+
+    private final MediaTitleDAO mediaTitleDAO;
     private final ExecutorService executorService;
 
     private static RevuRepository repository;
@@ -27,6 +30,7 @@ public class RevuRepository {
     private RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
         this.favoritesDAO = db.favoritesDAO();
+        this.mediaTitleDAO = db.mediaTitleDAO();
         executorService = Executors.newSingleThreadExecutor();
     }
 
@@ -59,5 +63,9 @@ public class RevuRepository {
      */
     public LiveData<List<Favorites>> getFavoritesForUser(int userId) {
         return favoritesDAO.getFavoritesForUser(userId);
+    }
+
+    public MediaTitle getMediaTitleById(int mediaTitleId) {
+       return mediaTitleDAO.getMediaTitleById(mediaTitleId);
     }
 }
