@@ -58,6 +58,9 @@ public class UserDaoTest {
         assertNull(result); // Should return null or throw an exception, depending on implementation
     }
 
+    /**
+     * Tests the insertion of a user and verifies that the user is not an admin by default.
+     */
     @Test
     public void userIsNotAdminByDefault() {
         User user = new User("defaultUser", "randomPassword");
