@@ -25,7 +25,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             super(itemView);
             title = itemView.findViewById(R.id.title);
             rating = itemView.findViewById(R.id.rating);
-            text = itemView.findViewById(R.id.text);
+            text = itemView.findViewById(R.id.reviewText);
             fav = itemView.findViewById(R.id.fav);
         }
     }
@@ -42,7 +42,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         Review review = reviewList.get(position);
         holder.title.setText(review.title);
         holder.rating.setText(String.valueOf(review.rating));
-        holder.text.setText(review.text);
+        holder.text.setText(review.reviewText);
         holder.fav.setText(review.isFavorite ? "Favorite" : "Not Favorite");
     }
 

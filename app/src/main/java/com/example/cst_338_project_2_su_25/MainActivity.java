@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
+import com.example.cst_338_project_2_su_25.ReviewHistoryActivity;
 
 import java.util.List;
 
@@ -31,8 +32,15 @@ public class MainActivity extends AppCompatActivity {
 
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
+        Button viewReviewsButton = findViewById(R.id.btnViewReviews);
+
         openFavoritesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+        });
+
+        viewReviewsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, ReviewHistoryActivity.class);
             startActivity(intent);
         });
 

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/rating_5_0" />
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/reviewText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/this_is_a_sample_review_text" />

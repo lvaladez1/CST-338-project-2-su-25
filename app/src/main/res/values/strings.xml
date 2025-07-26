@@ -24,4 +24,5 @@
     <string name="rating_5_0">Rating: 5.0</string>
     <string name="this_is_a_sample_review_text">This is a sample review text.</string>
     <string name="favorite">Favorite</string>
+    <string name="view_my_reviews">View my Reviews</string>
 </resources>
