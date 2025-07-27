@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -43,7 +44,14 @@ public interface MediaTitleDAO {
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE)
     List<MediaTitle> getAllMediaTitles();
 
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :tvShow & userId = :userId ORDER BY title DESC")
+    LiveData<List<MediaTitle>> getAllTvShows(int userId, String tvShow);
+
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :movie & userId = :userId ORDER BY title DESC")
+    LiveData<List<MediaTitle>> getAllMovies(int userId, String movie);
+
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE mediaTitleId = :id")
     MediaTitle getMediaTitleById(int id);
+
 
 }
