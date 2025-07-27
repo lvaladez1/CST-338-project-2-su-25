@@ -4,6 +4,16 @@
     android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/welcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to_revu1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/red_dark"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/usernameInput"
@@ -26,5 +36,13 @@
         android:text="@string/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:src="@drawable/revulogo"
+        android:contentDescription="@string/revu_logo"
+        android:layout_marginTop="32dp"/>
 </LinearLayout>
 
