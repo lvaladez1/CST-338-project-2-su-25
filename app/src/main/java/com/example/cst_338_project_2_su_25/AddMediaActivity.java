@@ -2,24 +2,24 @@ package com.example.cst_338_project_2_su_25;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
 import com.example.cst_338_project_2_su_25.databinding.ActivityAddMediaBinding;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
-public class AddMediaActivity extends AppCompatActivity {
 
+public class AddMediaActivity extends AppCompatActivity {
+    public static final String TAG = "REVU_MEDIA";
     private RevuRepository repository;
     String title = "";
     String type = "";
+    int rating = 0;
     String genre = "";
     String review = "";
     int loggedInUserId = -1;
@@ -48,7 +48,8 @@ public class AddMediaActivity extends AppCompatActivity {
         binding.btnSaveMediaTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                genre = "tvShow";
+                type = "tvShow";
+                getInformationFromDisplay();
                 insertMediaRecord();
                 Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
                 intent.putExtra("mediaTitle", "TV Shows");
@@ -57,15 +58,39 @@ public class AddMediaActivity extends AppCompatActivity {
         });
     }
 
-    static Intent addMediaIntentFactory(Context context){
+    static Intent addMediaIntentFactory(Context context) {
         return new Intent(context, AddMediaActivity.class);
     }
 
-    private void insertMediaRecord(){
-        if (title.isEmpty()){
+    private void insertMediaRecord() {
+        if (title.isEmpty()) {
             return;
         }
-        MediaTitle mediaTitle = new MediaTitle(title, type, genre, loggedInUserId);
+
+        MediaTitle mediaTitle = new MediaTitle(title, type, rating, genre, loggedInUserId);
         repository.insertMediaTitle(mediaTitle);
+    }
+
+    private void getInformationFromDisplay() {
+        title = binding.mediaTitleEditText.getText().toString();
+        try {
+            rating = Integer.parseInt(binding.mediaRatingEditText.getText().toString());
+        } catch (NumberFormatException e) {
+            Log.d(TAG, "Error reading value from rating edit text.");
+        }
+        try {
+            SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("userId", loggedInUserId); // assuming getUserId() returns an int
+            editor.apply();
+            loggedInUserId = prefs.getInt("userId", -1);
+        } catch (RuntimeException e) {
+            Log.d(TAG, "Error reading value from rating edit text.");
+        }
+        try {
+            genre = binding.genreSpinner.getSelectedItem().toString();
+        } catch (RuntimeException e) {
+            Log.d(TAG, "Error reading genre spinner");
+        }
     }
 }
