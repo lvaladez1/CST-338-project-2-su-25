@@ -13,12 +13,12 @@ import java.util.List;
 public class MediaTitleViewModel extends AndroidViewModel {
     private final RevuRepository repository;
 
-    public MediaTitleViewModel(Application application){
+    public MediaTitleViewModel(Application application) {
         super(application);
         repository = RevuRepository.getRepository(application);
     }
 
-    public LiveData<List<MediaTitle>> getAllMediaTitlesById(int userId){
+    public LiveData<List<MediaTitle>> getAllLiveDataTvShowsByUserId(int userId) {
         return repository.getAllTvShowsByUserId(userId);
     }
 
