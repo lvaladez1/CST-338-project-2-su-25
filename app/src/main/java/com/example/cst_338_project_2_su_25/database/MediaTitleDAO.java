@@ -44,10 +44,10 @@ public interface MediaTitleDAO {
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE)
     List<MediaTitle> getAllMediaTitles();
 
-    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :tvShow & userId = :userId ORDER BY title DESC")
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :tvShow AND userId = :userId ORDER BY title ASC")
     LiveData<List<MediaTitle>> getAllTvShows(int userId, String tvShow);
 
-    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :movie & userId = :userId ORDER BY title DESC")
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :movie AND userId = :userId ORDER BY title ASC")
     LiveData<List<MediaTitle>> getAllMovies(int userId, String movie);
 
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE mediaTitleId = :id")

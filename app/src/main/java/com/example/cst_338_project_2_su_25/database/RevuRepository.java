@@ -21,7 +21,6 @@ public class RevuRepository {
 
     private final FavoritesDAO favoritesDAO;
 
-    private final MediaTitleDAO mediaTitleDAO;
     private final ExecutorService executorService;
 
     private static RevuRepository repository;
@@ -35,7 +34,6 @@ public class RevuRepository {
      */
     private RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
-        this.mediaTitleDAO = db.mediaTitleDao();
         this.favoritesDAO = db.favoritesDAO();
         this.mediaTitleDAO = db.mediaTitleDAO();
         executorService = Executors.newSingleThreadExecutor();
@@ -61,7 +59,7 @@ public class RevuRepository {
         return null;
     }
 
-    public void insertMediaTitle(MediaTitle mediaTitle){
+    public void insertMediaTitle(MediaTitle mediaTitle) {
         RevuDatabase.databaseWriteExecutor.execute(() ->
                 mediaTitleDAO.insert(mediaTitle));
     }
@@ -98,15 +96,16 @@ public class RevuRepository {
     }
 
 
-    public LiveData<List<MediaTitle>> getAllTvShowsByUserId(int userId){
+    public LiveData<List<MediaTitle>> getAllTvShowsByUserId(int userId) {
         return mediaTitleDAO.getAllTvShows(userId, "tvShow");
     }
 
-    public LiveData<List<MediaTitle>> getAllMoviesByUserId(int userId){
+    public LiveData<List<MediaTitle>> getAllMoviesByUserId(int userId) {
         return mediaTitleDAO.getAllMovies(userId, "movie");
+    }
 
     public MediaTitle getMediaTitleById(int mediaTitleId) {
-       return mediaTitleDAO.getMediaTitleById(mediaTitleId);
+        return mediaTitleDAO.getMediaTitleById(mediaTitleId);
 
     }
 }
