@@ -17,7 +17,7 @@ import java.util.concurrent.Future;
 
 public class RevuRepository {
 
-    //private final MediaTitleDAO mediaTitleDAO;
+    private final MediaTitleDAO mediaTitleDAO;
 
     private final FavoritesDAO favoritesDAO;
 
@@ -109,8 +109,8 @@ public class RevuRepository {
     }
 
 
-    public MediaTitle getMediaTitleById ( int mediaTitleId){
-
+    //public MediaTitle getMediaTitleById ( int mediaTitleId) {
+    //}
     public MediaTitle getMediaTitleById(int mediaTitleId) {
 
         return mediaTitleDAO.getMediaTitleById(mediaTitleId);
