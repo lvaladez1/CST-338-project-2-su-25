@@ -42,6 +42,8 @@ public class MediaTitle {
      */
     private String genre;
 
+    private int userId;
+
     /**
      * Constructor for the MediaTitle class with title, type, and genre.
      *
@@ -49,10 +51,11 @@ public class MediaTitle {
      * @param type  the type of media (movie or show)
      * @param genre the genre category of the media
      */
-    public MediaTitle(String title, String type, String genre) {
+    public MediaTitle(String title, String type, String genre, int userId) {
         this.title = title;
         this.type = type;
         this.genre = genre;
+        this.userId = userId;
     }
 
     /**
@@ -151,5 +154,13 @@ public class MediaTitle {
      */
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

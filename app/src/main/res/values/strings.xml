@@ -20,4 +20,6 @@
     <string name="filter_favorites">Filter Favorites</string>
     <string name="Tv_shows">Tv Shows</string>
     <string name="Movies">Movies</string>
+    <string name="addmediatitle">addMediaTitle</string>
+    <string name="override_media_title">override</string>
 </resources>

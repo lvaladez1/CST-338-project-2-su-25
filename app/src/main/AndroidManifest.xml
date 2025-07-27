@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST338project2su25">
         <activity
+            android:name=".AddMediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayMediaActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,10 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity"/>
-
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".FavoritesActivity" />
-
         <activity android:name=".FilterFavoritesActivity" />
     </application>
 

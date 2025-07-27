@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMediaActivity">
+
+    <TextView
+        android:id="@+id/addMediaTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="override"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancelAddMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Cancel"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="12dp"
+        android:text="Title"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addMediaTextView" />
+
+    <EditText
+        android:id="@+id/mediaTitleEditText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Enter Title"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/titleTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/mediaRatingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+
+        android:text="Rating"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <EditText
+        android:id="@+id/mediaRatingEditText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:hint="Enter Rating"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/mediaRatingTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaTitleEditText" />
+
+    <TextView
+        android:id="@+id/mediaGenreTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:text="Genre"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaRatingTextView" />
+
+    <Spinner
+        android:id="@+id/genreSpinner"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBaseline_toBaselineOf="@+id/mediaGenreTextView"
+        app:layout_constraintStart_toEndOf="@id/mediaGenreTextView" />
+
+    <TextView
+        android:id="@+id/mediaReviewTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:padding="2dp"
+        android:text="Review"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaGenreTextView" />
+
+    <EditText
+        android:id="@+id/mediaReviewEditText"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_margin="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="left"
+        android:hint="Write Review"
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaReviewTextView" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSaveMediaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Save"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaReviewEditText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
