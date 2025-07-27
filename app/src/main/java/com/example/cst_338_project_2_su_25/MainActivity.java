@@ -16,12 +16,13 @@ import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
 
 
-
 public class MainActivity extends AppCompatActivity {
+
 
     private Favorites favorite;
 
-    public MainActivity() {}
+    public MainActivity() {
+    }
 
     public MainActivity(int contentLayoutId, Favorites favorite) {
         super(contentLayoutId);
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
         Log.d("MainActivity", "Logged in user: " + loggedInUser);
-        if(loggedInUser == null) {
+        if (loggedInUser == null) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Button createUserButton = findViewById(R.id.createUserButton);
         SharedPreferences pref = getSharedPreferences("appPrefs", MODE_PRIVATE);
         boolean isAdmin = prefs.getBoolean("isAdmin", false);
-        if(isAdmin) {
+        if (isAdmin) {
             adminLabel.setVisibility(View.VISIBLE);
             createUserButton.setVisibility(View.VISIBLE);
             createUserButton.setOnClickListener(view -> {
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
         Button viewUsersButton = findViewById(R.id.viewUsersButton);
-        if(isAdmin) {
+        if (isAdmin) {
             viewUsersButton.setVisibility(View.VISIBLE);
             viewUsersButton.setOnClickListener(view -> {
                 Intent intent = new Intent(MainActivity.this, AdminViewUsersActivity.class);
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button logoutButton = findViewById(R.id.logoutButton);
 
+        Button tvShowsButton = findViewById(R.id.btnTvShows);
+
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
         Button viewReviewsButton = findViewById(R.id.btnViewReviews);
@@ -73,11 +76,18 @@ public class MainActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("username");
 
         TextView usernameText = findViewById(R.id.usernameTextView);
-        if(username != null) {
+        if (username != null) {
             usernameText.setText(getString(R.string.welcome_user, username));
         }
 
-
+        tvShowsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", "TV Shows");
+                startActivity(intent);
+            }
+        });
 
         openFavoritesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
@@ -95,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
 
-        if(logoutButton != null) {
+        if (logoutButton != null) {
             logoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -109,8 +119,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
             });
-        }
-        else {
+        } else {
             Log.d("MainActivity", "Logout button is null");
         }
 
@@ -130,4 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-}}
+
+    }
+}

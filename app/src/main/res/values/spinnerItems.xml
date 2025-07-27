@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinnerItems">
+        <item>Action</item>
+        <item>Adventure</item>
+        <item>Comedy</item>
+        <item>Crime and Mystery</item>
+        <item>Drama</item>
+        <item>Fantasy</item>
+        <item>Historical</item>
+        <item>Horror</item>
+        <item>Romance</item>
+        <item>Satire</item>
+        <item>Science fiction</item>
+        <item>Cyberpunk and derivatives</item>
+        <item>Speculative</item>
+        <item>Thriller</item>
+        <item>Other</item>
+    </string-array>
+</resources>

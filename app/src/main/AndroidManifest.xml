@@ -18,7 +18,6 @@
             android:name=".DisplayMediaActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -30,10 +29,10 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".FilterFavoritesActivity" />
-        <activity android:name=".ReviewHistoryActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".AdminCreateUserActivity"/>
-        <activity android:name=".AdminViewUsersActivity"/>
+        <activity android:name=".ReviewHistoryActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AdminCreateUserActivity" />
+        <activity android:name=".AdminViewUsersActivity" />
     </application>
 
 </manifest>
