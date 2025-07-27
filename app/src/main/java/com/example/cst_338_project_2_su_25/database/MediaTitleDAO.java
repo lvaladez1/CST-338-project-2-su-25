@@ -50,4 +50,8 @@ public interface MediaTitleDAO {
     @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE type = :movie & userId = :userId ORDER BY title DESC")
     LiveData<List<MediaTitle>> getAllMovies(int userId, String movie);
 
+    @Query("SELECT * FROM " + RevuDatabase.MEDIA_TABLE + " WHERE mediaTitleId = :id")
+    MediaTitle getMediaTitleById(int id);
+
+
 }
