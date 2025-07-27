@@ -14,7 +14,7 @@ public class MediaTitleViewHolder extends RecyclerView.ViewHolder {
 
     private MediaTitleViewHolder(View mediaTitleView) {
         super(mediaTitleView);
-        mediaTitleViewItem = mediaTitleView.findViewById(R.id.displayMediaTitleRecyclerView);
+        mediaTitleViewItem = mediaTitleView.findViewById(R.id.recyclerItemTextView);
     }
 
     public void bind(String text) {
@@ -23,7 +23,7 @@ public class MediaTitleViewHolder extends RecyclerView.ViewHolder {
 
     static MediaTitleViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_display_media, parent, false);
+                .inflate(R.layout.media_title_recycler_item, parent, false);
         return new MediaTitleViewHolder(view);
     }
 }

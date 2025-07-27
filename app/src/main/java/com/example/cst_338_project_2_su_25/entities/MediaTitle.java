@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -38,11 +39,16 @@ public class MediaTitle {
     private String type;
 
     /**
+     * The media rating.
+     */
+    private int rating;
+
+    /**
      * The genre of the media.
      */
     private String genre;
 
-    private int userId;
+    private int userId; // Foreign key
 
     /**
      * Constructor for the MediaTitle class with title, type, and genre.
@@ -51,9 +57,10 @@ public class MediaTitle {
      * @param type  the type of media (movie or show)
      * @param genre the genre category of the media
      */
-    public MediaTitle(String title, String type, String genre, int userId) {
+    public MediaTitle(String title, String type, int rating, String genre, int userId) {
         this.title = title;
         this.type = type;
+        this.rating = rating;
         this.genre = genre;
         this.userId = userId;
     }
@@ -77,11 +84,11 @@ public class MediaTitle {
     /**
      * Returns a hash code value for this object.
      *
-     * @return a hash code based on the fields showMovieId, title, type, and genre.
+     * @return a hash code based on the fields showMovieId, title, type, rating, and genre.
      */
     @Override
     public int hashCode() {
-        return Objects.hash(mediaTitleId, title, type, genre);
+        return Objects.hash(mediaTitleId, title, type, rating, genre);
     }
 
     /**
@@ -162,5 +169,21 @@ public class MediaTitle {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return title + '\n' +
+                "Rating: " + rating + '\n' +
+                "Genre: " + genre + '\n';
     }
 }
