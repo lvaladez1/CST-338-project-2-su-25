@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameInput, passwordInput;
     private Button loginButton, signupButton;
+    private ImageView logo;
     private RevuDatabase db;
     private UserDao userDao;
 
@@ -44,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         passwordInput = findViewById(R.id.passwordInput);
         loginButton = findViewById(R.id.loginButton);
         signupButton = findViewById(R.id.signupButton);
+        logo = findViewById(R.id.logoImageView);
+
         db = RevuDatabase.getDatabase(this);
         userDao = db.userDao();
 
