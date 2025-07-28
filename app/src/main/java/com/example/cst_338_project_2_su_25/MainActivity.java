@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
         Log.d("MainActivity", "Logged in user: " + loggedInUser);
@@ -41,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
 
         TextView adminLabel = findViewById(R.id.adminLabel);
         Button createUserButton = findViewById(R.id.createUserButton);
