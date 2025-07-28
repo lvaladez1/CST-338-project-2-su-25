@@ -16,6 +16,8 @@ import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
 public class AddMediaActivity extends AppCompatActivity {
     public static final String TAG = "REVU_MEDIA";
+    private final String MEDIA_TYPE_TV_SHOW = "TV Shows";
+    private final String MEDIA_TYPE_MOVIE = "Movies";
     private RevuRepository repository;
     String title = "";
     String type = "";
@@ -39,21 +41,36 @@ public class AddMediaActivity extends AppCompatActivity {
         binding.btnCancelAddMedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                intent.putExtra("mediaTitle", "TV Shows");
-                startActivity(intent);
+                if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
+                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                    intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
+                    startActivity(intent);
+                } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
+                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                    intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
+                    startActivity(intent);
+                }
             }
         });
 
         binding.btnSaveMediaTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                type = "tvShow";
-                getInformationFromDisplay();
-                insertMediaRecord();
-                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                intent.putExtra("mediaTitle", "TV Shows");
-                startActivity(intent);
+                if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
+                    type = "tvShow";
+                    getInformationFromDisplay();
+                    insertMediaRecord();
+                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                    intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
+                    startActivity(intent);
+                } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
+                    type = "movie";
+                    getInformationFromDisplay();
+                    insertMediaRecord();
+                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                    intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
+                    startActivity(intent);
+                }
             }
         });
     }

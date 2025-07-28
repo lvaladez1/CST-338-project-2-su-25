@@ -11,13 +11,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cst_338_project_2_su_25.databinding.ActivityMainBinding;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
 
 
 public class MainActivity extends AppCompatActivity {
-
 
     private Favorites favorite;
 
@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button tvShowsButton = findViewById(R.id.btnTvShows);
 
+        Button moviesButton = findViewById(R.id.btnMovies);
+
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
         Button viewReviewsButton = findViewById(R.id.btnViewReviews);
@@ -89,6 +91,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        moviesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", "Movies");
+                startActivity(intent);
+            }
+        });
+
         openFavoritesButton.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
             startActivity(intent);
@@ -100,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /** * Logout button functionality
+        /* Logout button functionality
          * Clears shared preferences and navigates to LoginActivity
          */
 

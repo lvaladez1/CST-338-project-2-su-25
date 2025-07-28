@@ -22,6 +22,10 @@ public class MediaTitleViewModel extends AndroidViewModel {
         return repository.getAllTvShowsByUserId(userId);
     }
 
+    public LiveData<List<MediaTitle>> getAllLiveDataMoviesByUserId(int userId) {
+        return repository.getAllMoviesByUserId(userId);
+    }
+
     public void insert(MediaTitle title) {
         repository.insertMediaTitle(title);
     }

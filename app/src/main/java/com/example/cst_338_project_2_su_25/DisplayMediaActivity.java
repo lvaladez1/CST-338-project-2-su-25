@@ -22,6 +22,8 @@ public class DisplayMediaActivity extends AppCompatActivity {
     private RevuRepository repository;
     private MediaTitleViewModel mediaTitleViewModel;
     private int loggedInUserId = -1;
+    private final String MEDIA_TYPE_TV_SHOW = "TV Shows";
+    private final String MEDIA_TYPE_MOVIE = "Movies";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +48,29 @@ public class DisplayMediaActivity extends AppCompatActivity {
         loggedInUserId = prefs.getInt("userId", -1);
 
         repository = RevuRepository.getRepository(getApplication());
-        mediaTitleViewModel.getAllLiveDataTvShowsByUserId(loggedInUserId).observe(this, mediaTitles -> {
-            adapter.submitList(mediaTitles);
-        });
+
+        if (binding.mediaTitleTextView.getText().toString().equals(MEDIA_TYPE_TV_SHOW)) {
+            mediaTitleViewModel.getAllLiveDataTvShowsByUserId(loggedInUserId).observe(this, mediaTitles -> {
+                adapter.submitList(mediaTitles);
+            });
+        } else if (binding.mediaTitleTextView.getText().toString().equals(MEDIA_TYPE_MOVIE)) {
+            mediaTitleViewModel.getAllLiveDataMoviesByUserId(loggedInUserId).observe(this, mediaTitles -> {
+                adapter.submitList(mediaTitles);
+            });
+        }
 
         binding.addMediaTitleFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
-                intent.putExtra("addMedia", "Add TV Show");
-                startActivity(intent);
+                if (binding.mediaTitleTextView.getText().toString().equals("TV Shows")) {
+                    Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
+                    intent.putExtra("addMedia", "Add TV Show");
+                    startActivity(intent);
+                } else if (binding.mediaTitleTextView.getText().toString().equals("Movies")) {
+                    Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
+                    intent.putExtra("addMedia", "Add Movie");
+                    startActivity(intent);
+                }
             }
         });
 
@@ -73,6 +88,5 @@ public class DisplayMediaActivity extends AppCompatActivity {
     static Intent displayMediaIntentFactory(Context context) {
         return new Intent(context, DisplayMediaActivity.class);
     }
-
 
 }
