@@ -1,35 +1,43 @@
 package com.example.cst_338_project_2_su_25;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-/**
- * FavoritesActivity is responsible for displaying the user's list of favorite titles.
- * Also includes a button that allows the user to navigate to a filter screen
- * where they can filter favorites by category (movies or TV shows).
- */
+import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
+import com.example.cst_338_project_2_su_25.FavoritesAdapter;
+
+import java.util.List;
+
 public class FavoritesActivity extends AppCompatActivity {
 
-    /**
-     * Initializes the FavoritesActivity when it is created.
-     * Sets the layout to activity_favorites_list and sets up a button that opens the
-     * FilterFavoritesActivity when clicked.
-     *
-     * @param savedInstanceState Bundle containing the activity's previously saved state, if any.
-     */
+    private RecyclerView favoritesRecyclerView;
+    private FavoritesAdapter adapter;
+    private FavoritesDAO favoritesDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites_list);
 
-        Button openFilterFavoritesButton = findViewById(R.id.btnFilterFavorites);
+        favoritesRecyclerView = findViewById(R.id.favoritesRecyclerView);
+        favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        openFilterFavoritesButton.setOnClickListener(view -> {
-            Intent intent = new Intent(FavoritesActivity.this, FilterFavoritesActivity.class);
-            startActivity(intent);
+        int userId = getSharedPreferences("appPrefs", MODE_PRIVATE)
+                .getInt("userId", -1);
+
+        favoritesDAO = RevuDatabase.getDatabase(getApplicationContext()).favoritesDAO();
+        favoritesDAO.getFavoriteDisplayForUser(userId).observe(this, new Observer<List<FavoriteDisplay>>() {
+            @Override
+            public void onChanged(List<FavoriteDisplay> favoriteDisplays) {
+                adapter = new FavoritesAdapter(favoriteDisplays);
+                favoritesRecyclerView.setAdapter(adapter);
+            }
         });
     }
 }
