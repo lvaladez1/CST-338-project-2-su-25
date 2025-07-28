@@ -7,12 +7,15 @@
 
     <TextView
         android:id="@+id/filterFavorites"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="410dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/holo_red_dark"
         android:text="@string/filter_favorites"
+        android:textColor="@color/white"
         android:textSize="45sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,20 +24,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="@android:color/holo_red_dark"
         android:text="@string/Tv_shows"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filterFavorites" />
+        app:layout_constraintTop_toBottomOf="@+id/filterFavorites"
+        app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/btnFilterMovieFavorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="60dp"
+        android:background="@android:color/holo_red_dark"
         android:text="@string/Movies"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFilterTvFavorites" />
+        app:layout_constraintTop_toBottomOf="@+id/btnFilterTvFavorites"
+        app:layout_constraintVertical_bias="0.388"
+        tools:layout_editor_absoluteX="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

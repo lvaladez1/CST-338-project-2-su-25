@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
@@ -105,10 +106,15 @@ public class RevuRepository {
         return mediaTitleDAO.getAllMovies(userId, "movie");
     }
 
-    public MediaTitle getMediaTitleById(int mediaTitleId) {
+
+    public MediaTitle getMediaTitleById ( int mediaTitleId){
 
         return mediaTitleDAO.getMediaTitleById(mediaTitleId);
 
+    }
+
+    public LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId) {
+        return favoritesDAO.getFavoriteDisplayForUser(userId);
     }
 }
 

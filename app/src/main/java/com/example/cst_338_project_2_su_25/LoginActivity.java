@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
         if(loggedInUser != null) {
@@ -37,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
             finish();
             return;
         }
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
+
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
