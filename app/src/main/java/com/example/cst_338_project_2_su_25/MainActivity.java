@@ -11,13 +11,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cst_338_project_2_su_25.databinding.ActivityMainBinding;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private ActivityMainBinding binding;
 
     private Favorites favorite;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
         Log.d("MainActivity", "Logged in user: " + loggedInUser);
