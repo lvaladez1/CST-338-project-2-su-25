@@ -42,9 +42,6 @@ public class DisplayMediaActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("userId", loggedInUserId); // assuming getUserId() returns an int
-        editor.apply();
         loggedInUserId = prefs.getInt("userId", -1);
 
         repository = RevuRepository.getRepository(getApplication());

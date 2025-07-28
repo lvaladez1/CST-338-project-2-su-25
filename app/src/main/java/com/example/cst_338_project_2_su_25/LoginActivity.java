@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
-        if(loggedInUser != null) {
+        if (loggedInUser != null) {
             Log.d("LoginActivity", "User already logged in: " + loggedInUser);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("username", loggedInUser);
@@ -61,11 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("LOGIN SUCCESS", "Found user: " + user.username + ", isAdmin: " + user.isAdmin);
                             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
-                            editor.putInt("userId", user.getUserId());
+                            editor.putInt("userId", user.userId);
                             editor.putBoolean("isAdmin", user.isAdmin);
                             editor.putString("loggedInUser", user.username);
                             editor.apply();
-
 
 
                             Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
@@ -80,13 +79,12 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     });
                 });
-
-
-                signupButton.setOnClickListener(v -> {
-                    Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                    startActivity(intent);
-                });
             }
+        });
+
+        signupButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
     }
 }
