@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.cst_338_project_2_su_25.databinding.ActivityMainBinding;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.User;

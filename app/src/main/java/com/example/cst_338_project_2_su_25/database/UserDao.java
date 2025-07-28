@@ -23,7 +23,7 @@ public interface UserDao {
      *
      * @param user The User object to be inserted.
      */
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUser(User user);
 
     @Delete

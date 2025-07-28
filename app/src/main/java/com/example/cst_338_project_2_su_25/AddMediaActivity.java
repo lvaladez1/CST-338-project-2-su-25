@@ -97,9 +97,6 @@ public class AddMediaActivity extends AppCompatActivity {
         }
         try {
             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putInt("userId", loggedInUserId); // assuming getUserId() returns an int
-            editor.apply();
             loggedInUserId = prefs.getInt("userId", -1);
         } catch (RuntimeException e) {
             Log.d(TAG, "Error reading value from rating edit text.");
