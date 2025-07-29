@@ -18,7 +18,6 @@ import com.example.cst_338_project_2_su_25.entities.User;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private Favorites favorite;
 
     public MainActivity() {
@@ -36,8 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
-        String loggedInUser = prefs.getString("loggedInUser", null);
+        String loggedInUser = (prefs.getString("loggedInUser", null));
         Log.d("MainActivity", "Logged in user: " + loggedInUser);
+        if (prefs.getInt("userId", -1) == -1) {
+            prefs.edit().putInt("userId", 1).apply();
+        }
         if (loggedInUser == null) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -46,10 +48,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
         TextView adminLabel = findViewById(R.id.adminLabel);
         Button createUserButton = findViewById(R.id.createUserButton);
-        SharedPreferences pref = getSharedPreferences("appPrefs", MODE_PRIVATE);
         boolean isAdmin = prefs.getBoolean("isAdmin", false);
         if (isAdmin) {
             adminLabel.setVisibility(View.VISIBLE);
