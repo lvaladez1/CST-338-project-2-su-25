@@ -20,10 +20,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, rating, text, fav;
+        TextView title, type, rating, text, fav;
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
+            type = itemView.findViewById(R.id.mediaType);
             rating = itemView.findViewById(R.id.rating);
             text = itemView.findViewById(R.id.reviewText);
             fav = itemView.findViewById(R.id.fav);
@@ -42,6 +43,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Review review = reviewList.get(position);
         holder.title.setText(review.title);
+        holder.type.setText(review.type);
         holder.rating.setText(String.valueOf(review.rating));
         holder.text.setText(review.reviewText);
         holder.fav.setText(review.isFavorite ? "Favorite" : "Not Favorite");

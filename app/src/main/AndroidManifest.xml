@@ -12,25 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CST338project2su25">
         <activity
-            android:name=".AddMediaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DisplayMediaActivity"
-            android:exported="false" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddMediaActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DisplayMediaActivity"
+            android:exported="false" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".FavoritesActivity" />
+        <activity android:name=".FavoritesActivity"
+            android:exported="true"/>
         <activity android:name=".FilterFavoritesActivity" />
         <activity android:name=".ReviewHistoryActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:exported="true"/>
         <activity android:name=".AdminCreateUserActivity" />
         <activity android:name=".AdminViewUsersActivity" />
     </application>

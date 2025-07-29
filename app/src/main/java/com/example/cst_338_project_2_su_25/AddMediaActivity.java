@@ -6,7 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
@@ -26,6 +29,7 @@ public class AddMediaActivity extends AppCompatActivity {
     String genre = "";
     String review = "";
     int loggedInUserId = -1;
+    boolean isFavorite = false;
     ActivityAddMediaBinding binding;
 
     @Override
@@ -74,6 +78,15 @@ public class AddMediaActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.buttonAddToFavorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    isFavorite = true;
+                }
+            }
+        });
     }
 
     static Intent addMediaIntentFactory(Context context) {
@@ -90,14 +103,17 @@ public class AddMediaActivity extends AppCompatActivity {
 
         String reviewComment = binding.mediaReviewEditText.getText().toString();
         int reviewRating = rating;
-        String reviewTitle =title;
+        String reviewTitle = title;
         int userId = loggedInUserId;
+        boolean reviewFavorite = isFavorite;
 
         Review review = new Review();
         review.setTitle(reviewTitle);
+        review.setType(type);
         review.setReviewText(reviewComment);
         review.setRating(reviewRating);
         review.setUserId(userId);
+        review.setFavorite(reviewFavorite);
         repository.insertReview(review);
     }
 
@@ -111,6 +127,10 @@ public class AddMediaActivity extends AppCompatActivity {
         try {
             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
             loggedInUserId = prefs.getInt("userId", -1);
+            if (loggedInUserId <= 0) {
+                Toast.makeText(this, "Invalid user. Please log in again.", Toast.LENGTH_SHORT).show();
+                return;
+            }
         } catch (RuntimeException e) {
             Log.d(TAG, "Error reading value from rating edit text.");
         }

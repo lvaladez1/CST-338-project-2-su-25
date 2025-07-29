@@ -9,16 +9,17 @@ import androidx.room.RoomDatabase;
 import com.example.cst_338_project_2_su_25.entities.Review;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
-import com.example.cst_338_project_2_su_25.entities.Review;
 import com.example.cst_338_project_2_su_25.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Favorites.class, MediaTitle.class, Review.class}, version = 13, exportSchema = false)
+@Database(entities = {User.class, Favorites.class, MediaTitle.class, Review.class}, version = 15, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
-
+    public static final String USERS_TABLE = "USER";
     public static final String MEDIA_TABLE = "MEDIA_TABLE";
+    public static final String FAVORITES_TABLE = "FAVORITES_TABLE";
+    public static final String REVIEWS_TABLE = "Review";
     private static final String DATABASE_NAME = "Revudatabase";
     private static volatile RevuDatabase INSTANCE;
 

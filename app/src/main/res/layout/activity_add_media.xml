@@ -59,7 +59,6 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-
         android:text="Rating"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -131,11 +130,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
+        android:layout_marginTop="12dp"
         android:background="@android:color/holo_red_dark"
         android:text="Save"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mediaReviewEditText" />
+
+    <ToggleButton
+        android:id="@+id/buttonAddToFavorites"
+        android:layout_width="35dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/like_button_selector"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:textOff=""
+        android:textOn=""
+        app:layout_constraintStart_toEndOf="@id/btnSaveMediaTitle"
+        app:layout_constraintTop_toBottomOf="@id/mediaReviewEditText" />
+
+    <TextView
+        android:id="@+id/addToFavoritesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="28dp"
+        android:text="Add to Favorites"
+        app:layout_constraintStart_toEndOf="@id/buttonAddToFavorites"
         app:layout_constraintTop_toBottomOf="@id/mediaReviewEditText" />
 
 

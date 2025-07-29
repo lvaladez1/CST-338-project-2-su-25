@@ -4,13 +4,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+
 /**
  * This class represents a title that a user has marked as a favorite.
  * It is stored in a table called "FAVORITES_TABLE" in the database.
  * Each favorite is linked to a specific user using a foreign key (userId).
  * If the user is deleted from the database, all of their favorites will also be deleted automatically.
  */
-@Entity(tableName = "FAVORITES_TABLE",
+@Entity(tableName = RevuDatabase.FAVORITES_TABLE,
         foreignKeys = {@ForeignKey(entity = User.class, //connects foreign key user to favorites table
                 parentColumns = "userId",
                 childColumns = "userId",
