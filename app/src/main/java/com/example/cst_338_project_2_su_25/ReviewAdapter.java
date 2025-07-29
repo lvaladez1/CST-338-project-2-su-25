@@ -1,5 +1,7 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.util.Log;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +34,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.recyclerItemTextView);
-            ratingTextView = new TextView(itemView.getContext()); // Optional, if needed
             favoriteButton = itemView.findViewById(R.id.favoriteButton);
         }
     }
@@ -51,8 +52,19 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
         holder.favoriteButton.setOnClickListener(v -> {
             Favorites favorite = new Favorites();
-            favorite.userId = media.getUserId();
+
+            Context context = holder.itemView.getContext();
+            int currentUserId = context
+                    .getSharedPreferences("appPrefs", Context.MODE_PRIVATE)
+                    .getInt("userId", -1);
+            favorite.userId = currentUserId;
+
             favorite.mediaTitleId = media.getMediaTitleId();
+
+            Log.d("ReviewAdapter", "Inserting favorite: userId="
+                    + favorite.userId
+                    + " mediaTitleId="
+                    + favorite.mediaTitleId);
 
             new Thread(() -> {
                 RevuDatabase.getDatabase(holder.itemView.getContext()).favoritesDAO().addFavorite(favorite);

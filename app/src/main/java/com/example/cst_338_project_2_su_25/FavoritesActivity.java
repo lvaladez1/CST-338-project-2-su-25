@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
-import com.example.cst_338_project_2_su_25.FavoritesAdapter;
+
 
 import java.util.List;
 
@@ -28,16 +28,16 @@ public class FavoritesActivity extends AppCompatActivity {
         favoritesRecyclerView = findViewById(R.id.favoritesRecyclerView);
         favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        int userId = getSharedPreferences("appPrefs", MODE_PRIVATE)
-                .getInt("userId", -1);
+        int userId = getSharedPreferences("appPrefs", MODE_PRIVATE).getInt("userId", -1);
 
         favoritesDAO = RevuDatabase.getDatabase(getApplicationContext()).favoritesDAO();
-        favoritesDAO.getFavoriteDisplayForUser(userId).observe(this, new Observer<List<FavoriteDisplay>>() {
-            @Override
-            public void onChanged(List<FavoriteDisplay> favoriteDisplays) {
-                adapter = new FavoritesAdapter(favoriteDisplays);
-                favoritesRecyclerView.setAdapter(adapter);
-            }
-        });
+
+        favoritesDAO
+                .getFavoriteDisplayForUser(userId)
+                .observe(this, favoriteDisplays -> {
+                    adapter = new FavoritesAdapter(favoriteDisplays);
+                    favoritesRecyclerView.setAdapter(adapter);
+                });
+
     }
 }
