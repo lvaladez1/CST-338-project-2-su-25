@@ -17,6 +17,4 @@ public class Review {
     public float rating;
     public String reviewText;
     public boolean isFavorite;
-
-
 }
