@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
 
-    private List<Review> reviewList;
+    private final List<Review> reviewList;
 
     public ReviewAdapter(List<Review> reviews) {
         this.reviewList = reviews;
