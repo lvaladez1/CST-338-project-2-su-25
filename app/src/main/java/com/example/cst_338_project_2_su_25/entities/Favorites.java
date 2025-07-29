@@ -42,5 +42,7 @@ public class Favorites {
 
     public int mediaTitleId;
 
+    public String title;
+
 }
 

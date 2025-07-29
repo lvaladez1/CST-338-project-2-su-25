@@ -1,5 +1,7 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,5 +23,9 @@ public class FilterFavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_favorites);
+    }
+
+    static Intent FilterFavoritesActivityIntentFactory(Context context) {
+        return new Intent(context, FilterFavoritesActivity.class);
     }
 }
