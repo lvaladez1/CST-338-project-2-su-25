@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
 
-    private List<MediaTitle> mediaList;
+    private final List<MediaTitle> mediaList;
 
     public ReviewAdapter(List<MediaTitle> mediaList) {
         this.mediaList = mediaList;
@@ -54,10 +54,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             Favorites favorite = new Favorites();
 
             Context context = holder.itemView.getContext();
-            int currentUserId = context
+            favorite.userId = context
                     .getSharedPreferences("appPrefs", Context.MODE_PRIVATE)
                     .getInt("userId", -1);
-            favorite.userId = currentUserId;
 
             favorite.mediaTitleId = media.getMediaTitleId();
 
