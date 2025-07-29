@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewReviewsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, MediaTitleHistoryActivity.class);
+            Intent intent = new Intent(MainActivity.this, ReviewHistoryActivity.class);
             startActivity(intent);
         });
 
