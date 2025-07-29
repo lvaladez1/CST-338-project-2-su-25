@@ -15,15 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
-import com.example.cst_338_project_2_su_25.entities.Review;
 
 import java.util.List;
 
-public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
+public class MediaTitleAdapter extends RecyclerView.Adapter<MediaTitleAdapter.ViewHolder> {
 
     private final List<MediaTitle> mediaList;
 
-    public ReviewAdapter(List<MediaTitle> mediaList) {
+    public MediaTitleAdapter(List<MediaTitle> mediaList) {
         this.mediaList = mediaList;
     }
 
@@ -40,7 +39,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ReviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MediaTitleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_title_recycler_item, parent, false);
         return new ViewHolder(v);
     }

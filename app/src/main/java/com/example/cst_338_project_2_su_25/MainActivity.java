@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         viewReviewsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, ReviewHistoryActivity.class);
+            Intent intent = new Intent(MainActivity.this, MediaTitleHistoryActivity.class);
             startActivity(intent);
         });
 
@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        //dummy login data
         RevuDatabase db = RevuDatabase.getDatabase(getApplicationContext());
 
         User testUser = new User();

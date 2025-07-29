@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ReviewHistoryActivity extends AppCompatActivity {
+public class MediaTitleHistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MediaTitleDAO mediaTitleDAO;
 
@@ -34,7 +34,7 @@ public class ReviewHistoryActivity extends AppCompatActivity {
         executor.execute(() -> {
             List<MediaTitle> mediaList = mediaTitleDAO.getAllMediaTitles(); // or filter by userId if needed
             runOnUiThread(() -> {
-                recyclerView.setAdapter(new ReviewAdapter(mediaList)); // uses updated adapter
+                recyclerView.setAdapter(new MediaTitleAdapter(mediaList)); // uses updated adapter
             });
         });
     }
