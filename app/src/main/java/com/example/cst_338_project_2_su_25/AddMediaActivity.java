@@ -12,8 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
 import com.example.cst_338_project_2_su_25.databinding.ActivityAddMediaBinding;
+import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.Review;
 
@@ -64,14 +66,16 @@ public class AddMediaActivity extends AppCompatActivity {
                 if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
                     type = "tvShow";
                     getInformationFromDisplay();
-                    insertMediaRecord();
+                    boolean wasToggled = binding.buttonAddToFavorites.isChecked();
+                    insertMediaRecord(wasToggled);
                     Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
                     intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
                     startActivity(intent);
                 } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
                     type = "movie";
                     getInformationFromDisplay();
-                    insertMediaRecord();
+                    boolean wasToggled2 = binding.buttonAddToFavorites.isChecked();
+                    insertMediaRecord(wasToggled2);
                     Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
                     intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
                     startActivity(intent);
@@ -93,28 +97,59 @@ public class AddMediaActivity extends AppCompatActivity {
         return new Intent(context, AddMediaActivity.class);
     }
 
-    private void insertMediaRecord() {
+    private void insertMediaRecord(boolean isFavorite) {
         if (title.isEmpty()) {
             return;
         }
 
         MediaTitle mediaTitle = new MediaTitle(title, type, rating, genre, loggedInUserId);
-        repository.insertMediaTitle(mediaTitle);
+
+        long mediaId = repository.insertMediaTitle(mediaTitle);
+        if (mediaId < 1) {
+            Toast.makeText(this, "Error saving media — please try again", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         String reviewComment = binding.mediaReviewEditText.getText().toString();
+        Review review = new Review();
         int reviewRating = rating;
         String reviewTitle = title;
         int userId = loggedInUserId;
-        boolean reviewFavorite = isFavorite;
+        //boolean reviewFavorite = isFavorite;
 
-        Review review = new Review();
+        review.setMediaTitleId((int) mediaId);
         review.setTitle(reviewTitle);
         review.setType(type);
-        review.setReviewText(reviewComment);
+        review.setReviewText(binding.mediaReviewEditText.getText().toString());
         review.setRating(reviewRating);
         review.setUserId(userId);
-        review.setFavorite(reviewFavorite);
+        review.setFavorite(isFavorite);
         repository.insertReview(review);
+
+        /*new Thread(() -> {
+            RevuDatabase db = RevuDatabase.getDatabase(getApplicationContext());
+            long rid = db.reviewDao().insert(review);
+            if (rid < 1) {
+                Log.e("AddMedia", "Failed to insert review");
+                return;
+            }
+
+            // Only if the user ticked “favorite” do we also add it to the table
+            if (review.isFavorite()) {
+                Favorites fav = new Favorites();
+                fav.setUserId(review.getUserId());
+                fav.setMediaTitleId(review.getMediaTitleId());
+                db.favoritesDAO().addFavorite(fav);
+            }
+        }).start();*/
+
+        // if the user checked “favorite,” use our repository API to add it
+         if (isFavorite) {
+             Favorites fav = new Favorites();
+               fav.setUserId(review.getUserId());
+               fav.setMediaTitleId(review.getMediaTitleId());
+               repository.addFavorite(fav);
+         }
     }
 
     private void getInformationFromDisplay() {

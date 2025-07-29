@@ -3,6 +3,7 @@ package com.example.cst_338_project_2_su_25.database;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -17,7 +18,7 @@ public interface ReviewDao {
     @Query("SELECT * FROM Review WHERE userId = :userId")
     List<Review> getReviewsForUser(int userId);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(Review review);
 
     @Update
