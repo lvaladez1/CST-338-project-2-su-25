@@ -12,6 +12,11 @@
         android:layout_height="wrap_content"
         android:text="@string/sample_title" />
     <TextView
+        android:id="@+id/mediaType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_type" />
+    <TextView
         android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -3,21 +3,16 @@ package com.example.cst_338_project_2_su_25.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.cst_338_project_2_su_25.database.RevuDatabase;
-
-import java.util.concurrent.Executors;
-
 @Entity
 public class Review {
     /* * Represents a review for a media title.
      * Contains the review ID, user ID, title of the review, rating, review text, and a favorite flag.
      */
-
-
     @PrimaryKey (autoGenerate = true)
     public int reviewId;
     public int userId;
     public String title;
+    public String type;
     public float rating;
     public String reviewText;
     public boolean isFavorite;
@@ -40,6 +35,14 @@ public class Review {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setTitle(String title) {

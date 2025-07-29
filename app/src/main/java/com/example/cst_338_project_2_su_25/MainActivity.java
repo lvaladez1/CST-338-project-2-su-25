@@ -1,5 +1,5 @@
 package com.example.cst_338_project_2_su_25;
-import com.example.cst_338_project_2_su_25.LoginActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button tvShowsButton = findViewById(R.id.btnTvShows);
 
+        Button moviesButton = findViewById(R.id.btnMovies);
+
         Button openFavoritesButton = findViewById(R.id.btnViewFavorites);
 
         Button viewReviewsButton = findViewById(R.id.btnViewReviews);
@@ -91,6 +93,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
                 intent.putExtra("mediaTitle", "TV Shows");
+                startActivity(intent);
+            }
+        });
+
+        moviesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", "Movies");
                 startActivity(intent);
             }
         });

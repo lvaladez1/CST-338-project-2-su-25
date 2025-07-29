@@ -49,4 +49,5 @@
     <string name="add_to_favorites">Add to Favorites!</string>
     <string name="media_title">Media Title</string>
     <string name="Username">Username</string>
+    <string name="sample_type">sample_type</string>
 </resources>
