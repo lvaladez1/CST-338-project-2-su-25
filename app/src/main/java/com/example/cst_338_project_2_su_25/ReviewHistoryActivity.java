@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,12 +27,19 @@ public class ReviewHistoryActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.reviewRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         reviewDao = RevuDatabase.getDatabase(getApplicationContext()).reviewDao();
-        int userId = getSharedPreferences("appPrefs", MODE_PRIVATE)
-                .getInt("userId", -1);
+
+        SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
+        int userId = prefs.getInt("userId", -1);
+        boolean isAdmin = prefs.getBoolean("isAdmin", false);
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            List<Review> reviews = reviewDao.getReviewsForUser(userId);
+            List<Review> reviews;
+            if(isAdmin) {
+                reviews = reviewDao.getAllReviews();
+            } else {
+                reviews = reviewDao.getReviewsByUserId(userId);
+            }
             runOnUiThread(() -> {
                 recyclerView.setAdapter(new ReviewAdapter(reviews));
             });

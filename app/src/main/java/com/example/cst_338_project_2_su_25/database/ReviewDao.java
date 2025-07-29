@@ -13,4 +13,10 @@ public interface ReviewDao {
     // Method to insert a review
     @Query("SELECT * FROM Review WHERE userId = :userId")
     List<Review> getReviewsForUser(int userId);
+
+    @Query("SELECT * FROM Review")
+    List<Review> getAllReviews();
+
+    @Query("SELECT * FROM Review WHERE userId = :userId")
+    List<Review> getReviewsByUserId(int userId);
 }
