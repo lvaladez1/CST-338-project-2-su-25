@@ -31,6 +31,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class LoginActivityTest {
 
+    // Rule to launch the LoginActivity before each test
     @Rule
     public ActivityScenarioRule<LoginActivity> activityRule = new ActivityScenarioRule<>(LoginActivity.class);
     @Before
