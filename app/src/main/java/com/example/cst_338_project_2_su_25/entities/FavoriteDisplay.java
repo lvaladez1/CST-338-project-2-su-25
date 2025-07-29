@@ -8,11 +8,13 @@ import com.example.cst_338_project_2_su_25.FavoritesActivity;
 public class FavoriteDisplay{
     public int favoritesId;
     public String username;
+    public int mediaTitleId;
     public String title;
 
-    public FavoriteDisplay(int favoritesId, String username, String title) {
+    public FavoriteDisplay(int favoritesId, String username, int mediaTitleId, String title) {
         this.favoritesId = favoritesId;
         this.username = username;
+        this.mediaTitleId = mediaTitleId;
         this.title = title;
     }
 

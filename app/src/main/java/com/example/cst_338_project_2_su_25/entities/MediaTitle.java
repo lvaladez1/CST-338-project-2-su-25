@@ -2,6 +2,7 @@ package com.example.cst_338_project_2_su_25.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
@@ -19,7 +20,7 @@ import java.util.Objects;
  *
  * <p> Each instance of this class corresponds to a row in the RevuDatabase MEDIA_TABLE.
  */
-@Entity(tableName = RevuDatabase.MEDIA_TABLE)
+@Entity(tableName = RevuDatabase.MEDIA_TABLE, indices = {@Index(value = {"title", "type", "userId"}, unique = true)})
 public class MediaTitle {
 
     /**

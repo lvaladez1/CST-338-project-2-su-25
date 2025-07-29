@@ -38,10 +38,11 @@ public class RevuRepository {
      */
     private RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
-        this.reviewDao = db.reviewDao();
 
-        this.favoritesDAO = db.favoritesDAO();
         this.mediaTitleDAO = db.mediaTitleDAO();
+        this.reviewDao = db.reviewDao();
+        this.favoritesDAO = db.favoritesDAO();
+
         executorService = Executors.newSingleThreadExecutor();
     }
 
@@ -65,10 +66,20 @@ public class RevuRepository {
         return null;
     }
 
-    public void insertMediaTitle(MediaTitle mediaTitle) {
-        RevuDatabase.databaseWriteExecutor.execute(() ->
-                mediaTitleDAO.insert(mediaTitle));
-    }
+    /**
+     +     * Inserts a MediaTitle on a background thread and returns its new row ID.
+     +     * This blocks until the insert completes.
+     +     */
+   public long insertMediaTitle(MediaTitle mediaTitle) {
+       try {
+           // submit the DAO.insert() and then wait for its return value
+           return RevuDatabase.databaseWriteExecutor.submit(() ->
+                           mediaTitleDAO.insert(mediaTitle)).get();
+       } catch (Exception e) {
+           Log.e("RevuRepository", "Failed to insert MediaTitle", e);
+           return -1;
+       }
+   }
 
     /**
      * Adds a favorite title to the Room database using a background thread.

@@ -33,8 +33,8 @@ public interface MediaTitleDAO {
      *
      * @param mediaTitle the MediaTitle object to insert or replace.
      */
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(MediaTitle mediaTitle);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    long insert(MediaTitle mediaTitle);
 
     /**
      * Retrieves all media titles from the MEDIA_TABLE.
