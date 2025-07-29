@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -29,10 +30,17 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        usernameInput = findViewById(R.id.usernameInput);
+        passwordInput = findViewById(R.id.passwordInput);
+        loginButton = findViewById(R.id.loginButton);
+        signupButton = findViewById(R.id.signupButton);
+        db = RevuDatabase.getDatabase(this);
+        userDao = db.userDao();
+
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = prefs.getString("loggedInUser", null);
         if (loggedInUser != null) {
-            Log.d("LoginActivity", "User already logged in: " + loggedInUser);
+
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             intent.putExtra("username", loggedInUser);
             startActivity(intent);
@@ -40,13 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
-        usernameInput = findViewById(R.id.usernameInput);
-        passwordInput = findViewById(R.id.passwordInput);
-        loginButton = findViewById(R.id.loginButton);
-        signupButton = findViewById(R.id.signupButton);
-        db = RevuDatabase.getDatabase(this);
-        userDao = db.userDao();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,5 +87,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
         });
+
     }
 }

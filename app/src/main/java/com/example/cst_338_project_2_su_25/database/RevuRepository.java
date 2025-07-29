@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
+import com.example.cst_338_project_2_su_25.entities.Review;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -26,6 +27,8 @@ public class RevuRepository {
 
     private static RevuRepository repository;
 
+    private final ReviewDao reviewDao;
+
     /**
      * Private constructor for RevuRepository.
      * Initializes the Room database and obtains an instance of FavoritesDAO.
@@ -35,6 +38,7 @@ public class RevuRepository {
      */
     private RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
+        this.reviewDao = db.reviewDao();
 
         this.favoritesDAO = db.favoritesDAO();
         this.mediaTitleDAO = db.mediaTitleDAO();
@@ -115,6 +119,12 @@ public class RevuRepository {
 
     public LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId) {
         return favoritesDAO.getFavoriteDisplayForUser(userId);
+    }
+
+    public void insertReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.insert(review);
+        });
     }
 }
 

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
 import com.example.cst_338_project_2_su_25.databinding.ActivityAddMediaBinding;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
+import com.example.cst_338_project_2_su_25.entities.Review;
 
 
 public class AddMediaActivity extends AppCompatActivity {
@@ -86,6 +87,18 @@ public class AddMediaActivity extends AppCompatActivity {
 
         MediaTitle mediaTitle = new MediaTitle(title, type, rating, genre, loggedInUserId);
         repository.insertMediaTitle(mediaTitle);
+
+        String reviewComment = binding.mediaReviewEditText.getText().toString();
+        int reviewRating = rating;
+        String reviewTitle =title;
+        int userId = loggedInUserId;
+
+        Review review = new Review();
+        review.setTitle(reviewTitle);
+        review.setReviewText(reviewComment);
+        review.setRating(reviewRating);
+        review.setUserId(userId);
+        repository.insertReview(review);
     }
 
     private void getInformationFromDisplay() {
