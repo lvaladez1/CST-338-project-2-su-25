@@ -47,6 +47,9 @@ public interface FavoritesDAO {
             "WHERE f.userId = :userId")
     LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId);
 
+    @Query("SELECT mediaTitleId FROM favorites_table WHERE userId = :userId")
+    LiveData<List<Integer>> getFavoriteMediaIdsForUser(int userId);
+
     @Query("DELETE FROM FAVORITES_TABLE WHERE userId = :userId AND mediaTitleId = :mediaTitleId")
     void deleteByUserAndMedia(int userId, int mediaTitleId);
 }

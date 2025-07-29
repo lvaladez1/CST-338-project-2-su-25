@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
 import com.example.cst_338_project_2_su_25.databinding.ActivityDisplayMediaBinding;
 import com.example.cst_338_project_2_su_25.viewHolders.MediaTitleAdapter;
@@ -47,43 +48,50 @@ public class DisplayMediaActivity extends AppCompatActivity {
         repository = RevuRepository.getRepository(getApplication());
 
         if (binding.mediaTitleTextView.getText().toString().equals(MEDIA_TYPE_TV_SHOW)) {
-            mediaTitleViewModel.getAllLiveDataTvShowsByUserId(loggedInUserId).observe(this, mediaTitles -> {
-                adapter.submitList(mediaTitles);
-            });
+            mediaTitleViewModel
+                    .getAllLiveDataTvShowsByUserId(loggedInUserId)
+                    .observe(this, mediaTitles -> adapter.submitList(mediaTitles));
+
         } else if (binding.mediaTitleTextView.getText().toString().equals(MEDIA_TYPE_MOVIE)) {
-            mediaTitleViewModel.getAllLiveDataMoviesByUserId(loggedInUserId).observe(this, mediaTitles -> {
-                adapter.submitList(mediaTitles);
-            });
+            mediaTitleViewModel
+                    .getAllLiveDataMoviesByUserId(loggedInUserId)
+                    .observe(this, mediaTitles -> adapter.submitList(mediaTitles));
         }
 
-        binding.addMediaTitleFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (binding.mediaTitleTextView.getText().toString().equals("TV Shows")) {
-                    Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
-                    intent.putExtra("addMedia", "Add TV Show");
-                    startActivity(intent);
-                } else if (binding.mediaTitleTextView.getText().toString().equals("Movies")) {
-                    Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
-                    intent.putExtra("addMedia", "Add Movie");
-                    startActivity(intent);
-                }
-            }
-        });
-
-        binding.backToLoginFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
+        RevuDatabase.getDatabase(getApplicationContext())
+                .favoritesDAO()
+                .getFavoriteMediaIdsForUser(loggedInUserId)
+                .observe(this, ids -> {
+                    adapter.setFavoriteIds(ids);
 
 
+                    binding.addMediaTitleFAB.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (binding.mediaTitleTextView.getText().toString().equals("TV Shows")) {
+                                Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
+                                intent.putExtra("addMedia", "Add TV Show");
+                                startActivity(intent);
+                            } else if (binding.mediaTitleTextView.getText().toString().equals("Movies")) {
+                                Intent intent = AddMediaActivity.addMediaIntentFactory(getApplicationContext());
+                                intent.putExtra("addMedia", "Add Movie");
+                                startActivity(intent);
+                            }
+                        }
+                    });
+
+                    binding.backToLoginFAB.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                });
     }
 
-    static Intent displayMediaIntentFactory(Context context) {
-        return new Intent(context, DisplayMediaActivity.class);
+        static Intent displayMediaIntentFactory (Context context){
+            return new Intent(context, DisplayMediaActivity.class);
+        }
     }
-
-}
