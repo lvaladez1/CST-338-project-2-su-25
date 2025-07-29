@@ -44,4 +44,6 @@
     <string name="go_back_to_menu">Go Back to Menu</string>
     <string name="welcome_to_revu1">Welcome to Revu!</string>
     <string name="revu_logo">Revu Logo</string>
+    <string name="item">Item</string>
+    <string name="heart">❤️</string>
 </resources>

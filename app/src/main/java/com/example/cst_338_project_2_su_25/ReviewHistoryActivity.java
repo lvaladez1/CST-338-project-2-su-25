@@ -6,9 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cst_338_project_2_su_25.database.ReviewDao;
+import com.example.cst_338_project_2_su_25.database.MediaTitleDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
-import com.example.cst_338_project_2_su_25.entities.Review;
+import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
 
 public class ReviewHistoryActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private ReviewDao reviewDao;
+    private MediaTitleDAO mediaTitleDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +25,16 @@ public class ReviewHistoryActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.reviewRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        reviewDao = RevuDatabase.getDatabase(getApplicationContext()).reviewDao();
+
+        mediaTitleDAO = RevuDatabase.getDatabase(getApplicationContext()).mediaTitleDAO();
         int userId = getSharedPreferences("appPrefs", MODE_PRIVATE)
                 .getInt("userId", -1);
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            List<Review> reviews = reviewDao.getReviewsForUser(userId);
+            List<MediaTitle> mediaList = mediaTitleDAO.getAllMediaTitles(); // or filter by userId if needed
             runOnUiThread(() -> {
-                recyclerView.setAdapter(new ReviewAdapter(reviews));
+                recyclerView.setAdapter(new ReviewAdapter(mediaList)); // uses updated adapter
             });
         });
     }
