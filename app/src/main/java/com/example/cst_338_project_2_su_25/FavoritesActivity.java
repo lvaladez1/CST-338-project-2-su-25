@@ -5,16 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
-import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
-
-
-import java.util.List;
+import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
 
 public class FavoritesActivity extends AppCompatActivity {
 

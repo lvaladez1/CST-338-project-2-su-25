@@ -41,7 +41,7 @@ public class MediaTitle {
     /**
      * The media rating.
      */
-    private int rating;
+    private float rating;
 
     /**
      * The genre of the media.
@@ -57,7 +57,7 @@ public class MediaTitle {
      * @param type  the type of media (movie or show)
      * @param genre the genre category of the media
      */
-    public MediaTitle(String title, String type, int rating, String genre, int userId) {
+    public MediaTitle(String title, String type, float rating, String genre, int userId) {
         this.title = title;
         this.type = type;
         this.rating = rating;
@@ -171,11 +171,11 @@ public class MediaTitle {
         this.userId = userId;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

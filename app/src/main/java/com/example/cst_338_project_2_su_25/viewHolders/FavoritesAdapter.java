@@ -1,4 +1,4 @@
-package com.example.cst_338_project_2_su_25;
+package com.example.cst_338_project_2_su_25.viewHolders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cst_338_project_2_su_25.R;
 import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
 
 import java.util.List;

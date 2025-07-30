@@ -70,6 +70,24 @@ public class RevuRepository {
                 mediaTitleDAO.insert(mediaTitle));
     }
 
+    public void insertReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.insert(review);
+        });
+    }
+
+    public void updateReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.update(review);
+        });
+    }
+
+    public void deleteReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.delete(review);
+        });
+    }
+
     /**
      * Adds a favorite title to the Room database using a background thread.
      *
@@ -119,12 +137,6 @@ public class RevuRepository {
 
     public LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId) {
         return favoritesDAO.getFavoriteDisplayForUser(userId);
-    }
-
-    public void insertReview(Review review) {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            reviewDao.insert(review);
-        });
     }
 }
 

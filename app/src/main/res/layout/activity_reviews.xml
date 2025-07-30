@@ -7,4 +7,87 @@
     android:layout_height="match_parent"
     tools:context=".ReviewsActivity">
 
+    <TextView
+        android:id="@+id/reviewHistoryTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:padding="8dp"
+        android:text="override review"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mediaRatingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="14dp"
+        android:text="@string/rating"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewHistoryTitleTextView" />
+
+    <RatingBar
+        android:id="@+id/mediaRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="12dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewHistoryTitleTextView" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancelAddMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/reviewTextEditText"
+        android:layout_width="387dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/write_a_review"
+        android:gravity="start"
+        android:text="@string/this_is_where_the_review_text_is"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediaRatingTextView" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSaveMediaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviewTextEditText" />
+
+    <ImageButton
+        android:id="@+id/btnDeleteReview"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/delete_icon"
+        android:contentDescription="@string/deletes_a_review"
+        app:layout_constraintStart_toEndOf="@id/btnSaveMediaTitle"
+        app:layout_constraintTop_toBottomOf="@id/reviewTextEditText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,17 @@ public class Review {
     public String reviewText;
     public boolean isFavorite;
 
+    public Review(){}
+
+    public Review(int userId, String title, String type, float rating, String reviewText, boolean isFavorite) {
+        this.isFavorite = isFavorite;
+        this.rating = rating;
+        this.reviewText = reviewText;
+        this.title = title;
+        this.type = type;
+        this.userId = userId;
+    }
+
     public int getReviewId() {
         return reviewId;
     }
