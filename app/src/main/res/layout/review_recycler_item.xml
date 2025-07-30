@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:attr/colorLongPressedHighlight"
     android:orientation="vertical"
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/reviewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sample_title" />
+        android:text="@string/sample_title"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/mediaType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sample_type" />
+
     <TextView
         android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/rating_5_0" />
+
     <TextView
         android:id="@+id/reviewText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/this_is_a_sample_review_text" />
+        android:text="@string/this_is_a_sample_review_text"
+        android:textStyle="italic" />
+
     <TextView
         android:id="@+id/fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/favorite" />
+        android:text="@string/favorite"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false" />
 
 </LinearLayout>

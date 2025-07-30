@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
+import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
 import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
 
 

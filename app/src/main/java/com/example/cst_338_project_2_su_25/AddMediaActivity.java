@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,7 @@ public class AddMediaActivity extends AppCompatActivity {
     private RevuRepository repository;
     String title = "";
     String type = "";
-    int rating = 0;
+    float rating = 0;
     String genre = "";
     String review = "";
     int loggedInUserId = -1;
@@ -57,6 +58,16 @@ public class AddMediaActivity extends AppCompatActivity {
                     intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
                     startActivity(intent);
                 }
+            }
+        });
+
+        binding.mediaRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float ratingUser, boolean fromUser) {
+                // 'rating' is the new rating value
+                rating = ratingUser;
+                // 'fromUser' indicates if the change was initiated by the user
+                Toast.makeText(AddMediaActivity.this, "Rating: " + ratingUser, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -112,15 +123,14 @@ public class AddMediaActivity extends AppCompatActivity {
 
         String reviewComment = binding.mediaReviewEditText.getText().toString();
         Review review = new Review();
-        int reviewRating = rating;
+        float reviewRating = rating;
         String reviewTitle = title;
         int userId = loggedInUserId;
         //boolean reviewFavorite = isFavorite;
 
-        review.setMediaTitleId((int) mediaId);
         review.setTitle(reviewTitle);
         review.setType(type);
-        review.setReviewText(binding.mediaReviewEditText.getText().toString());
+        review.setReviewText(reviewComment);
         review.setRating(reviewRating);
         review.setUserId(userId);
         review.setFavorite(isFavorite);
@@ -154,11 +164,7 @@ public class AddMediaActivity extends AppCompatActivity {
 
     private void getInformationFromDisplay() {
         title = binding.mediaTitleEditText.getText().toString();
-        try {
-            rating = Integer.parseInt(binding.mediaRatingEditText.getText().toString());
-        } catch (NumberFormatException e) {
-            Log.d(TAG, "Error reading value from rating edit text.");
-        }
+
         try {
             SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
             loggedInUserId = prefs.getInt("userId", -1);

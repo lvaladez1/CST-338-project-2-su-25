@@ -34,6 +34,8 @@
             android:exported="true"/>
         <activity android:name=".AdminCreateUserActivity" />
         <activity android:name=".AdminViewUsersActivity" />
+        <activity android:name=".ReviewsActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

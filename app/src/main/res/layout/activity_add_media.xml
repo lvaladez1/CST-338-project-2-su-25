@@ -65,15 +65,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
-    <EditText
-        android:id="@+id/mediaRatingEditText"
-        android:layout_width="300dp"
+    <RatingBar
+        android:id="@+id/mediaRatingBar"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:hint="Enter Rating"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
         android:inputType="text"
-        android:padding="8dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/mediaRatingTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mediaTitleEditText" />
 
@@ -112,7 +110,7 @@
 
     <EditText
         android:id="@+id/mediaReviewEditText"
-        android:layout_width="match_parent"
+        android:layout_width="387dp"
         android:layout_height="240dp"
         android:layout_margin="8dp"
         android:layout_marginStart="16dp"
