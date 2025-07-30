@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
+import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FavoritesActivity extends AppCompatActivity {
 
@@ -26,15 +32,16 @@ public class FavoritesActivity extends AppCompatActivity {
         favoritesRecyclerView = findViewById(R.id.favoritesRecyclerView);
         favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        adapter = new FavoritesAdapter();
+        favoritesRecyclerView.setAdapter(adapter);
+
         int userId = getSharedPreferences("appPrefs", MODE_PRIVATE).getInt("userId", -1);
 
         favoritesDAO = RevuDatabase.getDatabase(getApplicationContext()).favoritesDAO();
 
-        favoritesDAO
-                .getFavoriteDisplayForUser(userId)
+        favoritesDAO.getFavoriteDisplayForUser(userId)
                 .observe(this, favoriteDisplays -> {
-                    adapter = new FavoritesAdapter(favoriteDisplays);
-                    favoritesRecyclerView.setAdapter(adapter);
+                    adapter.setFavorites(favoriteDisplays);
                 });
 
     }

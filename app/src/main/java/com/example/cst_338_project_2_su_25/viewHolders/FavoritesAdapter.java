@@ -11,14 +11,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.cst_338_project_2_su_25.R;
 import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
 
-    private List<FavoriteDisplay> favoriteList;
+    private final List<FavoriteDisplay> favoriteList= new ArrayList<>();
 
-    public FavoritesAdapter(List<FavoriteDisplay> favoriteList) {
-        this.favoriteList = favoriteList;
+    public FavoritesAdapter() {
+    }
+
+    public void setFavorites(List<FavoriteDisplay> newFavorites) {
+        favoriteList.clear();
+        if (newFavorites != null) {
+            favoriteList.addAll(newFavorites);
+        }
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

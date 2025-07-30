@@ -1,9 +1,10 @@
 package com.example.cst_338_project_2_su_25.entities;
 
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "Review", indices = {@Index(value = {"mediaTitleId","userId"}, unique = true)})
 public class Review {
     /* * Represents a review for a media title.
      * Contains the review ID, user ID, title of the review, rating, review text, and a favorite flag.
@@ -11,6 +12,16 @@ public class Review {
     @PrimaryKey (autoGenerate = true)
     public int reviewId;
     public int userId;
+
+    public int getMediaTitleId() {
+        return mediaTitleId;
+    }
+
+    public void setMediaTitleId(int mediaTitleId) {
+        this.mediaTitleId = mediaTitleId;
+    }
+
+    public int mediaTitleId;
     public String title;
     public String type;
     public float rating;

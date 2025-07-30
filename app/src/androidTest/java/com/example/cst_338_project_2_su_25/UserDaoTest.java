@@ -16,6 +16,11 @@ import com.example.cst_338_project_2_su_25.entities.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+/**
+ * This test is placed in androidTest instead of test
+ * because it relies on ApplicationProvider.getApplicationContext()
+ * and Room database, which require instrumentation.
+ */
 
 public class UserDaoTest {
     private UserDao userDao;
