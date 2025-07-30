@@ -74,6 +74,7 @@ public class AddMediaActivity extends AppCompatActivity {
         binding.btnSaveMediaTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
                     type = "tvShow";
                     getInformationFromDisplay();
@@ -160,6 +161,15 @@ public class AddMediaActivity extends AppCompatActivity {
                fav.setMediaTitleId(review.getMediaTitleId());
                repository.addFavorite(fav);
          }
+         title = "";
+         rating = 0;
+         genre = "";
+         this.review = "";
+         loggedInUserId = -1;
+         binding.mediaTitleEditText.setText("");
+         binding.mediaReviewEditText.setText("");
+         binding.mediaRatingBar.setRating(0);
+         binding.buttonAddToFavorites.setChecked(false);
     }
 
     private void getInformationFromDisplay() {

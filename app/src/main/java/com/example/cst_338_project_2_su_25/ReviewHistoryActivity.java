@@ -2,6 +2,7 @@ package com.example.cst_338_project_2_su_25;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +38,12 @@ public class ReviewHistoryActivity extends AppCompatActivity {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            List<Review> reviews = reviewDao.getReviewsForUser(userId);
+            List<Review> reviews = reviewDao.getAllReviews();
+            for (Review review : reviews) {
+                Log.d("DEBUG REVIEW", "Title: " + review.getTitle() +
+                        ", UserId: " + review.getUserId() +
+                        ", Rating: " + review.getRating());
+            }
             runOnUiThread(() -> {
                 recyclerView.setAdapter(new ReviewAdapter(reviews));
             });

@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Review", indices = {@Index(value = {"mediaTitleId","userId"}, unique = true)})
+@Entity(tableName = "Review", indices = {@Index(value = {"mediaTitleId","userId"})})
 public class Review {
     /* * Represents a review for a media title.
      * Contains the review ID, user ID, title of the review, rating, review text, and a favorite flag.

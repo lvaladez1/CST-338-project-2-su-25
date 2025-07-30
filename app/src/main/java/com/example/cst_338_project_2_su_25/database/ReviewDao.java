@@ -26,4 +26,7 @@ public interface ReviewDao {
 
     @Delete
     void delete(Review review);
+
+    @Query("SELECT * FROM Review")
+    List<Review> getAllReviews();
 }
