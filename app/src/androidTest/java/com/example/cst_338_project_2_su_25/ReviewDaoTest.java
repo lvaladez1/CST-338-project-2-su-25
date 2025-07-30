@@ -19,6 +19,12 @@ import org.junit.Test;
 
 import java.util.List;
 
+/**
+ * This test is placed in androidTest instead of test
+ * because it relies on ApplicationProvider.getApplicationContext()
+ * and Room database, which require instrumentation.
+ */
+
 public class ReviewDaoTest {
     private RevuDatabase db;
     private ReviewDao reviewDao;
@@ -81,5 +87,23 @@ public class ReviewDaoTest {
         reviewDao.delete(inserted);
         List<Review> remaining = reviewDao.getReviewsForUser(1);
         assertTrue(remaining.isEmpty());
+    }
+
+    @Test
+    public void testReadView() {
+        Review review = new Review();
+        review.setUserId(1);
+        review.setTitle("Read Test");
+        review.setRating(4f);
+        review.setReviewText("Just testing read functionality.");
+
+        reviewDao.insert(review);
+
+        List<Review> results = reviewDao.getReviewsForUser(1);
+
+        assertEquals(1, results.size());
+        Review fetchedReview = results.get(0);
+        assertEquals("Just testing read functionality.", fetchedReview.getReviewText());
+        assertEquals(4f, fetchedReview.getRating(), 0.01);
     }
 }

@@ -27,7 +27,11 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
+/**
+ * This test is placed in androidTest instead of test
+ * because it relies on ApplicationProvider.getApplicationContext()
+ * and Room database, which require instrumentation.
+ */
 @RunWith(AndroidJUnit4.class)
 public class LoginActivityTest {
 
