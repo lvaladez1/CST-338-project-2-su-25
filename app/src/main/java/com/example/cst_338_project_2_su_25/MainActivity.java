@@ -17,7 +17,9 @@ import com.example.cst_338_project_2_su_25.entities.User;
 
 
 
+
 public class MainActivity extends AppCompatActivity {
+
 
     private Favorites favorite;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = (prefs.getString("loggedInUser", null));
+        boolean isAdmin = prefs.getBoolean("isAdmin", false);
+        boolean isTestRun = prefs.getBoolean("isTestRun", false);
         Log.d("MainActivity", "Logged in user: " + loggedInUser);
         if (prefs.getInt("userId", -1) == -1) {
             prefs.edit().putInt("userId", 1).apply();
@@ -53,7 +57,23 @@ public class MainActivity extends AppCompatActivity {
 
         TextView adminLabel = findViewById(R.id.adminLabel);
         Button createUserButton = findViewById(R.id.createUserButton);
-        boolean isAdmin = prefs.getBoolean("isAdmin", false);
+        Button viewUsersButton = findViewById(R.id.viewUsersButton);
+        if(isAdmin || isTestRun) {
+            adminLabel.setVisibility(View.VISIBLE);
+            createUserButton.setVisibility(View.VISIBLE);
+            viewUsersButton.setVisibility(View.VISIBLE);
+            createUserButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, AdminCreateUserActivity.class);
+                startActivity(intent);
+            });
+            viewUsersButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, AdminViewUsersActivity.class);
+                startActivity(intent);
+            });
+        }
+
+
+
         if (isAdmin) {
             adminLabel.setVisibility(View.VISIBLE);
             createUserButton.setVisibility(View.VISIBLE);
@@ -62,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
-        Button viewUsersButton = findViewById(R.id.viewUsersButton);
+
         if (isAdmin) {
             viewUsersButton.setVisibility(View.VISIBLE);
             viewUsersButton.setOnClickListener(view -> {
@@ -70,6 +90,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             });
         }
+
+
+        if(!isAdmin) {
+            createUserButton.setVisibility(View.GONE);
+            viewUsersButton.setVisibility(View.GONE);
+        }
+
+
+
 
         Button logoutButton = findViewById(R.id.logoutButton);
 

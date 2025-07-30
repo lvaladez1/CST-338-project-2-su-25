@@ -64,4 +64,10 @@ public class LoginActivityTest {
         onView(withId(R.id.loginButton)).perform(click());
         intended(hasComponent(MainActivity.class.getName()));
     }
+    @Test
+    public void testNavigatetoSignUp() {
+        ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(LoginActivity.class);
+        onView(withId(R.id.signupButton)).perform(click());
+        intended(hasComponent(SignUpActivity.class.getName()));
+    }
 }

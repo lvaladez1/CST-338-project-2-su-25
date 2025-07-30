@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="testReadView()">
+      <SelectionState runConfigName="testNavigateToAdminCreateUser()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="loginNavigatesToReviewsActivity()">
+      <SelectionState runConfigName="testNavigateToAdminViewUsers()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="navigatesToReviewsActivity()">
+      <SelectionState runConfigName="testLogoutGoesToLoginActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="navigatesToReviewsActivity() (1)">
+      <SelectionState runConfigName="testNavigatetoAddReviewActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainActivityTest">
+      <SelectionState runConfigName="testNavigatetoSignUp()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

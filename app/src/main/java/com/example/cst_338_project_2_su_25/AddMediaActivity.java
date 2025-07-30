@@ -57,6 +57,7 @@ public class AddMediaActivity extends AppCompatActivity {
                     intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
                     startActivity(intent);
                 }
+                finish();
             }
         });
 
