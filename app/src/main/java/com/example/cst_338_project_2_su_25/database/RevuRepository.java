@@ -137,5 +137,9 @@ public class RevuRepository {
             reviewDao.insert(review);
         });
     }
+
+    public LiveData<List<Review>> getReviewsByUserId(int userId) {
+        return reviewDao.getLiveReviewsForUser(userId);
+    }
 }
 
