@@ -2,6 +2,7 @@ package com.example.cst_338_project_2_su_25.entities;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
@@ -44,7 +45,11 @@ public class Favorites {
 
     public int mediaTitleId;
 
-    /*public String getTitle() {
+    public String title;
+
+    public String userName;
+
+    public String getTitle() {
         return title;
     }
 
@@ -52,7 +57,6 @@ public class Favorites {
         this.title = title;
     }
 
-    public String title;*/
 
     public int getFavoritesId() {
         return favoritesId;
@@ -78,7 +82,11 @@ public class Favorites {
         this.mediaTitleId = mediaTitleId;
     }
 
-
-
+    public void setUserName(String userName){
+        this.userName = userName;
+    }
+    public String getUserName() {
+        return userName;
+    }
 }
 
