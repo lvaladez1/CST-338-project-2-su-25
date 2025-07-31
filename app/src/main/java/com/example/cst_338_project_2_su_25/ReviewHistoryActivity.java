@@ -1,10 +1,8 @@
 package com.example.cst_338_project_2_su_25;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,14 +19,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ReviewHistoryActivity extends AppCompatActivity {
-    private ActivityReviewHistoryBinding binding;
     private RecyclerView recyclerView;
     private ReviewDao reviewDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityReviewHistoryBinding.inflate(getLayoutInflater());
+        com.example.cst_338_project_2_su_25.databinding.ActivityReviewHistoryBinding binding = ActivityReviewHistoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         recyclerView = findViewById(R.id.reviewRecyclerView);
@@ -45,17 +42,12 @@ public class ReviewHistoryActivity extends AppCompatActivity {
                         ", UserId: " + review.getUserId() +
                         ", Rating: " + review.getRating());
             }
-            runOnUiThread(() -> {
-                recyclerView.setAdapter(new ReviewAdapter(reviews));
-            });
+            runOnUiThread(() -> recyclerView.setAdapter(new ReviewAdapter(reviews)));
         });
 
-        binding.backToLoginFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
+        binding.backToLoginFAB.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         });
     }
 }

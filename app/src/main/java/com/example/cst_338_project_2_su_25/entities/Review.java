@@ -13,10 +13,6 @@ public class Review {
     public int reviewId;
     public int userId;
 
-    public int getMediaTitleId() {
-        return mediaTitleId;
-    }
-
     public void setMediaTitleId(int mediaTitleId) {
         this.mediaTitleId = mediaTitleId;
     }

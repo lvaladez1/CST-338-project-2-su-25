@@ -47,7 +47,7 @@ public class MediaTitle {
     /**
      * The genre of the media.
      */
-    private String genre;
+    private final String genre;
 
     private int userId; // Foreign key
 
@@ -99,15 +99,6 @@ public class MediaTitle {
      */
     public String getGenre() {
         return genre;
-    }
-
-    /**
-     * Sets the genre of the media title.
-     *
-     * @param genre the new genre string
-     */
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     /**

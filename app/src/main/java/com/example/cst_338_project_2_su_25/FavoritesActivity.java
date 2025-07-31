@@ -3,7 +3,6 @@ package com.example.cst_338_project_2_su_25;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,18 +22,12 @@ import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
  * <p> This activity fetches favorite entries from the Room database using FavoritesDAO,
  * displays them in a RecyclerView, and provides navigation back to the login/main screen.
  *
- * @author
+ * @author Faith
  * @version 1.0
  */
 public class FavoritesActivity extends AppCompatActivity {
-    /** RecyclerView that displays the list of favorite media titles. */
-    private RecyclerView favoritesRecyclerView;
     /** Adapter that binds favorite data to the RecyclerView. */
     private FavoritesAdapter adapter;
-    /** Data access object for querying favorite entries from the database. */
-    private FavoritesDAO favoritesDAO;
-    /** View binding for the favorites display layout. */
-    private ActivityDisplayFavoritesBinding binding;
 
     /**
      * Called when the activity is starting. Initializes the RecyclerView, adapter,
@@ -47,11 +40,14 @@ public class FavoritesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityDisplayFavoritesBinding.inflate(getLayoutInflater());
+
+        // View binding for the favorites display layout.
+        com.example.cst_338_project_2_su_25.databinding.ActivityDisplayFavoritesBinding binding = ActivityDisplayFavoritesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // Setup RecyclerView and adapter
-        favoritesRecyclerView = findViewById(R.id.favoritesRecyclerView);
+        // RecyclerView that displays the list of favorite media titles.
+        RecyclerView favoritesRecyclerView = findViewById(R.id.favoritesRecyclerView);
         favoritesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         adapter = new FavoritesAdapter();
@@ -61,23 +57,18 @@ public class FavoritesActivity extends AppCompatActivity {
         int userId = getSharedPreferences("appPrefs", MODE_PRIVATE).getInt("userId", -1);
 
         // Access the database DAO
-        favoritesDAO = RevuDatabase.getDatabase(getApplicationContext()).favoritesDAO();
+        // Data access object for querying favorite entries from the database.
+        FavoritesDAO favoritesDAO = RevuDatabase.getDatabase(getApplicationContext()).favoritesDAO();
 
         // Observe favorite data for the current user and update the RecyclerView
         favoritesDAO.getFavoriteDisplayForUser(userId)
-                .observe(this, favorites -> {
-                    adapter.setFavorites(favorites);
-                });
+                .observe(this, favorites -> adapter.setFavorites(favorites));
 
         // Handle click event for floating action button to return to main activity
-        binding.backToLoginFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
+        binding.backToLoginFAB.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         });
-
     }
 
     /**
