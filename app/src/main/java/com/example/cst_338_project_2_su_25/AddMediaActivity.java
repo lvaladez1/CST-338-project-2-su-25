@@ -5,12 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.RatingBar;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cst_338_project_2_su_25.database.RevuRepository;
@@ -88,66 +84,54 @@ public class AddMediaActivity extends AppCompatActivity {
         repository = RevuRepository.getRepository(getApplication());
 
         // Handle cancel button to return to media display screen
-        binding.btnCancelAddMedia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
-                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                    intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
-                    startActivity(intent);
-                } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
-                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                    intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
-                    startActivity(intent);
-                }
+        binding.btnCancelAddMedia.setOnClickListener(v -> {
+            if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
+                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
+                startActivity(intent);
+            } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
+                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
+                startActivity(intent);
             }
         });
 
         // Listen for rating changes from the user
-        binding.mediaRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float ratingUser, boolean fromUser) {
-                // 'rating' is the new rating value
-                rating = ratingUser;
-                // 'fromUser' indicates if the change was initiated by the user
-                Toast.makeText(AddMediaActivity.this, "Rating: " + ratingUser, Toast.LENGTH_SHORT).show();
-            }
+        binding.mediaRatingBar.setOnRatingBarChangeListener((ratingBar, ratingUser, fromUser) -> {
+            // 'rating' is the new rating value
+            rating = ratingUser;
+            // 'fromUser' indicates if the change was initiated by the user
+            Toast.makeText(AddMediaActivity.this, "Rating: " + ratingUser, Toast.LENGTH_SHORT).show();
         });
 
         // Handle save button to store media, review, and favorite data
-        binding.btnSaveMediaTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.btnSaveMediaTitle.setOnClickListener(v -> {
 
-                if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
-                    type = "tvShow";
+            if (binding.addMediaTextView.getText().toString().equals("Add TV Show")) {
+                type = "tvShow";
 
-                    getInformationFromDisplay();
-                    insertMediaRecord();
+                getInformationFromDisplay();
+                insertMediaRecord();
 
-                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                    intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
-                    startActivity(intent);
-                } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
-                    type = "movie";
+                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", MEDIA_TYPE_TV_SHOW);
+                startActivity(intent);
+            } else if (binding.addMediaTextView.getText().toString().equals("Add Movie")) {
+                type = "movie";
 
-                    getInformationFromDisplay();
-                    insertMediaRecord();
+                getInformationFromDisplay();
+                insertMediaRecord();
 
-                    Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
-                    intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(getApplicationContext(), DisplayMediaActivity.class);
+                intent.putExtra("mediaTitle", MEDIA_TYPE_MOVIE);
+                startActivity(intent);
             }
         });
 
         // Listen for favorite checkbox
-        binding.buttonAddToFavorites.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(@NonNull CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    isFavorite = true;
-                }
+        binding.buttonAddToFavorites.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                isFavorite = true;
             }
         });
     }

@@ -6,13 +6,11 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 
 
-import com.example.cst_338_project_2_su_25.DisplayFavoritesActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.Review;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -52,12 +50,7 @@ public class RevuRepository {
             return repository;
         }
         Future<RevuRepository> future = RevuDatabase.databaseWriteExecutor.submit(
-                new Callable<RevuRepository>() {
-                    @Override
-                    public RevuRepository call() throws Exception {
-                        return new RevuRepository(application);
-                    }
-                }
+                () -> new RevuRepository(application)
         );
         try {
             return future.get();
@@ -65,6 +58,10 @@ public class RevuRepository {
             Log.d("Help!", "Problem getting RevuRepository, thread error.");
         }
         return null;
+    }
+
+    public static void setRepository(RevuRepository repository) {
+        RevuRepository.repository = repository;
     }
 
     /**
@@ -83,21 +80,15 @@ public class RevuRepository {
    }
 
     public void insertReview(Review review) {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            reviewDao.insert(review);
-        });
+        Executors.newSingleThreadExecutor().execute(() -> reviewDao.insert(review));
     }
 
     public void updateReview(Review review) {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            reviewDao.update(review);
-        });
+        Executors.newSingleThreadExecutor().execute(() -> reviewDao.update(review));
     }
 
     public void deleteReview(Review review) {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            reviewDao.delete(review);
-        });
+        Executors.newSingleThreadExecutor().execute(() -> reviewDao.delete(review));
     }
 
     /**
