@@ -28,6 +28,12 @@ public interface ReviewDao {
     @Delete
     void delete(Review review);
 
+
+    @Query("SELECT * FROM Review WHERE userId = :userId")
+    LiveData<List<Review>> getLiveReviewsForUser(int userId);
+
+
     @Query("SELECT * FROM Review")
     LiveData<List<Review>> getAllReviews();
+
 }

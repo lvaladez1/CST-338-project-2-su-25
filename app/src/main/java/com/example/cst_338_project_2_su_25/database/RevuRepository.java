@@ -154,5 +154,9 @@ public class RevuRepository {
     public LiveData<List<Review>> getAllReviews() {
         return reviewDao.getAllReviews();
     }
+
+    public LiveData<List<Review>> getReviewsByUserId(int userId) {
+        return reviewDao.getLiveReviewsForUser(userId);
+    }
 }
 
