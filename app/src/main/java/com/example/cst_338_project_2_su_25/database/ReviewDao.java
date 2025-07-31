@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -28,5 +29,5 @@ public interface ReviewDao {
     void delete(Review review);
 
     @Query("SELECT * FROM Review")
-    List<Review> getAllReviews();
+    LiveData<List<Review>> getAllReviews();
 }

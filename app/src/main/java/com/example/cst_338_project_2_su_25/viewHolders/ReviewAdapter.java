@@ -16,11 +16,20 @@ import com.example.cst_338_project_2_su_25.entities.Review;
 import java.util.List;
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
-    private final List<Review> reviewList;
 
     public ReviewAdapter(List<Review> reviews) {
         this.reviewList = reviews;
     }
+
+    private List<Review> reviewList;
+
+    public void setReviews(List<Review> reviews) {
+        reviewList.clear();
+        reviewList.addAll(reviews);
+        notifyDataSetChanged();
+    }
+
+
 
     @NonNull
     @Override

@@ -29,6 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_user" />
+        <Button
+            android:id="@+id/btnBackToMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back1"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:drawablePadding="8dp" />
 
     </LinearLayout>
 </ScrollView>

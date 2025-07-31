@@ -36,6 +36,7 @@
         <activity android:name=".AdminViewUsersActivity" />
         <activity android:name=".ReviewsActivity"
             android:exported="false"/>
+        <activity android:name=".AdminViewReviewsActivity"/>
     </application>
 
 </manifest>

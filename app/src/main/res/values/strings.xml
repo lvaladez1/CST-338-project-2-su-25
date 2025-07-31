@@ -55,4 +55,8 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="rating">Rating</string>
+    <string name="view_all_reviews">View All Reviews</string>
+    <string name="all_user_reviews">All User Reviews</string>
+    <string name="back">BACK</string>
+    <string name="back1">BACK</string>
 </resources>
