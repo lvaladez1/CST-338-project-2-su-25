@@ -27,7 +27,7 @@
             android:exported="false" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".FavoritesActivity"
-            android:exported="true"/>
+            android:exported="false"/>
         <activity android:name=".FilterFavoritesActivity" />
         <activity android:name=".ReviewHistoryActivity" />
         <activity android:name=".MainActivity"

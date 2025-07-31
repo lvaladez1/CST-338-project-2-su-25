@@ -36,7 +36,7 @@ public class RevuRepository {
      *
      * @param application The application context used to initialize the Room database.
      */
-    public RevuRepository(Application application) {
+    private RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
 
         this.mediaTitleDAO = db.mediaTitleDAO();
@@ -148,10 +148,6 @@ public class RevuRepository {
 
     public LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId) {
         return favoritesDAO.getFavoriteDisplayForUser(userId);
-    }
-
-    public LiveData<List<Review>> getAllReviews() {
-        return reviewDao.getAllReviews();
     }
 }
 
