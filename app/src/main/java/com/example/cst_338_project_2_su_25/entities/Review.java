@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Review", indices = {@Index(value = {"mediaTitleId","userId"}, unique = true)})
+@Entity(tableName = "Review", indices = {@Index(value = {"mediaTitleId","userId"})})
 public class Review {
     /* * Represents a review for a media title.
      * Contains the review ID, user ID, title of the review, rating, review text, and a favorite flag.
@@ -27,6 +27,17 @@ public class Review {
     public float rating;
     public String reviewText;
     public boolean isFavorite;
+
+    public Review(){}
+
+    public Review(int userId, String title, String type, float rating, String reviewText, boolean isFavorite) {
+        this.isFavorite = isFavorite;
+        this.rating = rating;
+        this.reviewText = reviewText;
+        this.title = title;
+        this.type = type;
+        this.userId = userId;
+    }
 
     public int getReviewId() {
         return reviewId;

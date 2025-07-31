@@ -5,7 +5,8 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
+
+import com.example.cst_338_project_2_su_25.DisplayFavoritesActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.Review;
@@ -36,7 +37,7 @@ public class RevuRepository {
      *
      * @param application The application context used to initialize the Room database.
      */
-    private RevuRepository(Application application) {
+    public RevuRepository(Application application) {
         RevuDatabase db = RevuDatabase.getDatabase(application);
 
         this.mediaTitleDAO = db.mediaTitleDAO();
@@ -80,6 +81,24 @@ public class RevuRepository {
            return -1;
        }
    }
+
+    public void insertReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.insert(review);
+        });
+    }
+
+    public void updateReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.update(review);
+        });
+    }
+
+    public void deleteReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            reviewDao.delete(review);
+        });
+    }
 
     /**
      * Adds a favorite title to the Room database using a background thread.
@@ -128,14 +147,12 @@ public class RevuRepository {
 
     }
 
-    public LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId) {
+    public LiveData<List<Favorites>> getFavoriteDisplayForUser(int userId) {
         return favoritesDAO.getFavoriteDisplayForUser(userId);
     }
 
-    public void insertReview(Review review) {
-        Executors.newSingleThreadExecutor().execute(() -> {
-            reviewDao.insert(review);
-        });
+    public LiveData<List<Review>> getAllReviews() {
+        return reviewDao.getAllReviews();
     }
 
     public LiveData<List<Review>> getReviewsByUserId(int userId) {

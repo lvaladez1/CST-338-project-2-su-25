@@ -50,4 +50,13 @@
     <string name="media_title">Media Title</string>
     <string name="Username">Username</string>
     <string name="sample_type">sample_type</string>
+    <string name="this_is_where_the_review_text_is">This is where the review text is.</string>
+    <string name="deletes_a_review">Deletes a Review</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="rating">Rating</string>
+    <string name="view_all_reviews">View All Reviews</string>
+    <string name="all_user_reviews">All User Reviews</string>
+    <string name="back">BACK</string>
+    <string name="back1">BACK</string>
 </resources>

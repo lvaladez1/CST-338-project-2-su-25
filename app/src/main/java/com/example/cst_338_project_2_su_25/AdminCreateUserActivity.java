@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -34,6 +35,13 @@ public class AdminCreateUserActivity extends AppCompatActivity {
         newAdminCheckbox = findViewById(R.id.newAdminCheckbox);
         db = RevuDatabase.getDatabase(this);
         userDao = db.userDao();
+
+        Button btnBackToMain = findViewById(R.id.btnBackToMain);
+        btnBackToMain.setOnClickListener(v -> {
+            Intent intent = new Intent(AdminCreateUserActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
 
         createUserButton.setOnClickListener(view -> {

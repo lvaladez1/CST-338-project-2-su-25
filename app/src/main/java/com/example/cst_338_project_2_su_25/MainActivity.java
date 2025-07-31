@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        Button btnViewALlReviews = findViewById(R.id.btnViewAllReviews);
         SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String loggedInUser = (prefs.getString("loggedInUser", null));
         boolean isAdmin = prefs.getBoolean("isAdmin", false);
@@ -53,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
+        if(isAdmin) {
+            btnViewALlReviews.setVisibility(View.VISIBLE);
+            btnViewALlReviews.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, AdminViewReviewsActivity.class);
+                intent.putExtra("isAdmin", true);
+                startActivity(intent);
+            });
+        }
+
 
 
         TextView adminLabel = findViewById(R.id.adminLabel);
@@ -110,7 +119,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button viewReviewsButton = findViewById(R.id.btnViewReviews);
 
+        prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
         String username = getIntent().getStringExtra("username");
+        if(username == null) {
+            username = prefs.getString("loggedInUser", "User");
+        }
 
         TextView usernameText = findViewById(R.id.usernameTextView);
         if (username != null) {

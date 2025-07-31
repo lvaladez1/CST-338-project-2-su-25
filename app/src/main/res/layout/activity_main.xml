@@ -94,6 +94,13 @@
             android:layout_height="wrap_content"
             android:text="@string/view_delete_users"
             android:visibility="gone"/>
+        <Button
+            android:id="@+id/btnViewAllReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all_reviews"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 </FrameLayout>

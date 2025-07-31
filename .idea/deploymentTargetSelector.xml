@@ -5,6 +5,7 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+
       <SelectionState runConfigName="testNavigatetoAddReviewActivity()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -20,6 +21,7 @@
       <SelectionState runConfigName="testAdminButtonsAreHidden()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+
     </selectionStates>
   </component>
 </project>

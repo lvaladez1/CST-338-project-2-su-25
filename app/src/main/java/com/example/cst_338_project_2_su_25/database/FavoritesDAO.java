@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.cst_338_project_2_su_25.entities.FavoriteDisplay;
+import com.example.cst_338_project_2_su_25.DisplayFavoritesActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 
 import java.util.List;
@@ -40,23 +40,13 @@ public interface FavoritesDAO {
     @Query("SELECT * FROM FAVORITES_TABLE WHERE userId = :userId")
     LiveData<List<Favorites>> getFavoritesForUser(int userId);
 
-    /*@Query("SELECT f.favoritesId, u.username, m.title " +
-            "FROM FAVORITES_TABLE f " +
-            "JOIN USER u ON f.userId = u.userId " +
-            "JOIN MEDIA_TABLE m ON f.mediaTitleId = m.mediaTitleId " +
-            "WHERE f.userId = :userId")
-    LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId);*/
-
-    @Query("SELECT f.favoritesId AS favoritesId," +
-                    " f.userId AS userId," +
-                    " f.mediaTitleId AS mediaTitleId," +
-                    " m.title AS title" +
-                    " FROM FAVORITES_TABLE AS f" +
-                    " JOIN MEDIA_TABLE AS m" +
-                    " ON f.mediaTitleId = m.mediaTitleId" +
-                    " WHERE f.userId = :userId" )
-
-    LiveData<List<FavoriteDisplay>> getFavoriteDisplayForUser(int userId);
+    @Query("SELECT f.*, u.username AS username, m.title AS title " +
+            "FROM FAVORITES_TABLE AS f " +
+            "JOIN USER AS u ON f.userId = u.userId " +
+            "JOIN MEDIA_TABLE AS m ON f.mediaTitleId = m.mediaTitleId " +
+            "WHERE f.userId = :userId " +
+            "ORDER BY f.favoritesId ASC")
+    LiveData<List<Favorites>> getFavoriteDisplayForUser(int userId);
 
     @Query("SELECT mediaTitleId FROM favorites_table WHERE userId = :userId")
     LiveData<List<Integer>> getFavoriteMediaIdsForUser(int userId);

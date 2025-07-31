@@ -67,10 +67,19 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("loggedInUser", user.username);
                             editor.apply();
 
+                            boolean isAdmin = user.isAdmin;
+                            Intent intent;
+                            if(isAdmin) {
+                                intent = new Intent(LoginActivity.this, AdminViewReviewsActivity.class);
+                                intent.putExtra("isAdmin", true);
+                            } else {
+                                intent = new Intent(LoginActivity.this, MainActivity.class);
+                            }
+
 
                             Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                             //startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent = new Intent(LoginActivity.this, MainActivity.class);
                             intent.putExtra("username", username);
                             startActivity(intent);
                             finish();
