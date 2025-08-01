@@ -63,6 +63,11 @@ public class FavoritesActivity extends AppCompatActivity {
                     binding.favoritesRecyclerView.setVisibility(empty ? View.GONE : View.VISIBLE);
                 });
 
+        // Handles a click event where Filter button goes to FilterFavoritesActivity
+        binding.btnFilterFavorites.setOnClickListener(v ->
+                startActivity(FilterFavoritesActivity.FilterFavoritesActivityIntentFactory(this))
+        );
+
         // Handles a click event for floating action button to return to the main activity
         binding.backToLoginFAB.setOnClickListener(v ->
                 startActivity(new Intent(this, MainActivity.class)));

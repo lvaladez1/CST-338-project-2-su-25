@@ -123,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView usernameText = findViewById(R.id.usernameTextView);
+        String firstLetterName = username.substring(0, 1).toUpperCase();
+        String remainingLettersName = username.substring(1);
+        username = firstLetterName + remainingLettersName;
         usernameText.setText(getString(R.string.welcome_user, username));
 
         tvShowsButton.setOnClickListener(v -> {
