@@ -79,14 +79,6 @@ public class RevuRepository {
    }
 
     /**
-     * Deletes a MediaTitle from the DB.
-     * @param mediaTitle The media title to be deleted from the database.
-     */
-    public void deleteMediaTitle(MediaTitle mediaTitle) {
-        Executors.newSingleThreadExecutor().execute(() -> mediaTitleDAO.delete(mediaTitle));
-    }
-
-    /**
      * Searches for a MediaTitle by its ID and if found
      * MediaTitle gets deleted from the DB.
      * @param mediaTitleId The ID used to find the specific media title.
@@ -117,7 +109,6 @@ public class RevuRepository {
      *
      * @param favorite The Favorites object to be inserted into the database.
      */
-    //will switch to livedata later so UI can auto update
     public void addFavorite(Favorites favorite) {
         executorService.execute(() -> favoritesDAO.addFavorite(favorite));
     }
@@ -127,7 +118,6 @@ public class RevuRepository {
      *
      * @param favorite The Favorites object to be deleted from the database.
      */
-    //will switch to livedata later so UI can auto update
     public void removeFavorite(Favorites favorite) {
         executorService.execute(() -> favoritesDAO.removeFavorite(favorite));
     }
