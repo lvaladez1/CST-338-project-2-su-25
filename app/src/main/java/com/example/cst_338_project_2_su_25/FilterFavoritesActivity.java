@@ -25,7 +25,7 @@ public class FilterFavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_favorites);
 
-        Button tvButton    = findViewById(R.id.btnFilterTvFavorites);
+        Button tvButton = findViewById(R.id.btnFilterTvFavorites);
         Button movieButton = findViewById(R.id.btnFilterMovieFavorites);
 
         // when TV Shows button is tapped, go to the tv show filter screen
