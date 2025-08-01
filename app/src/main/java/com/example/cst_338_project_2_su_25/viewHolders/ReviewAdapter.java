@@ -68,6 +68,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
                     Intent intent = new Intent(view.getContext(), ReviewsActivity.class);
 
                     intent.putExtra("reviewId", currentReview.getReviewId());
+                    intent.putExtra("mediaTitleId", currentReview.getMediaTitleId());
                     intent.putExtra("userId", currentReview.getUserId());
                     intent.putExtra("reviewTitle", currentReview.getTitle());
                     intent.putExtra("rating", currentReview.getRating());

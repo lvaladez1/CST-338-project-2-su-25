@@ -2,6 +2,7 @@ package com.example.cst_338_project_2_su_25.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -35,6 +36,9 @@ public interface MediaTitleDAO {
      */
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(MediaTitle mediaTitle);
+
+    @Delete
+    void delete(MediaTitle mediaTitle);
 
     /**
      * Retrieves all media titles from the MEDIA_TABLE.
