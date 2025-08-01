@@ -21,14 +21,11 @@ import com.example.cst_338_project_2_su_25.entities.User;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Favorites favorite;
-
     public MainActivity() {
     }
 
     public MainActivity(int contentLayoutId, Favorites favorite) {
         super(contentLayoutId);
-        this.favorite = favorite;
     }
 
     @Override
@@ -126,26 +123,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView usernameText = findViewById(R.id.usernameTextView);
-        if (username != null) {
-            usernameText.setText(getString(R.string.welcome_user, username));
-        }
+        usernameText.setText(getString(R.string.welcome_user, username));
 
-        tvShowsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
-                intent.putExtra("mediaTitle", "TV Shows");
-                startActivity(intent);
-            }
+        tvShowsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
+            intent.putExtra("mediaTitle", "TV Shows");
+            startActivity(intent);
         });
 
-        moviesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
-                intent.putExtra("mediaTitle", "Movies");
-                startActivity(intent);
-            }
+        moviesButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DisplayMediaActivity.class);
+            intent.putExtra("mediaTitle", "Movies");
+            startActivity(intent);
         });
 
         openFavoritesButton.setOnClickListener(view -> {
@@ -159,24 +148,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        /** * Logout button functionality
-         * Clears shared preferences and navigates to LoginActivity
+        /* Logout button functionality
+          Clears shared preferences and navigates to LoginActivity
          */
-
-
         if (logoutButton != null) {
-            logoutButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences prefs = getSharedPreferences("appPrefs", MODE_PRIVATE);
-                    prefs.edit().clear().apply();
+            logoutButton.setOnClickListener(view -> {
+                SharedPreferences prefs1 = getSharedPreferences("appPrefs", MODE_PRIVATE);
+                prefs1.edit().clear().apply();
 
-                    Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Logged out successfully", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             });
         } else {
             Log.d("MainActivity", "Logout button is null");

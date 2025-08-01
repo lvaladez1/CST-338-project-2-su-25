@@ -2,7 +2,6 @@ package com.example.cst_338_project_2_su_25;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,9 +19,7 @@ import java.util.concurrent.Executors;
 public class AdminCreateUserActivity extends AppCompatActivity {
     private EditText newUsernameInput, newPasswordInput;
     private CheckBox newAdminCheckbox;
-    private Button createUserButton;
     private UserDao userDao;
-    private RevuDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +28,9 @@ public class AdminCreateUserActivity extends AppCompatActivity {
 
         newUsernameInput = findViewById(R.id.newUsernameInput);
         newPasswordInput = findViewById(R.id.newPasswordInput);
-        createUserButton = findViewById(R.id.createUserButton);
+        Button createUserButton = findViewById(R.id.createUserButton);
         newAdminCheckbox = findViewById(R.id.newAdminCheckbox);
-        db = RevuDatabase.getDatabase(this);
+        RevuDatabase db = RevuDatabase.getDatabase(this);
         userDao = db.userDao();
 
         Button btnBackToMain = findViewById(R.id.btnBackToMain);
@@ -55,9 +52,7 @@ public class AdminCreateUserActivity extends AppCompatActivity {
             ExecutorService executor = Executors.newSingleThreadExecutor();
             executor.execute(()->{
                 if(userDao.getUserByUsername(username) != null) {
-                    runOnUiThread(() ->{
-                        Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show();
-                    });
+                    runOnUiThread(() -> Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show());
                 }
                 else {
 

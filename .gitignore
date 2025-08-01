@@ -195,6 +195,7 @@ obj/
 .idea/gradle.xml
 .idea/jarRepositories.xml
 .idea/navEditor.xml
+.idea/deploymentTargetSelector.xml
 
 # Legacy Eclipse project files
 .cproject
@@ -232,3 +233,4 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,macos,windows,gradle
+/.idea/inspectionProfiles/Project_Default.xml

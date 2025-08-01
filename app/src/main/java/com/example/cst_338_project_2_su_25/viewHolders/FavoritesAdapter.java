@@ -69,7 +69,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     /**
      * Creates a new ViewHolder when the RecyclerView needs a new item layout to display.
      *
-     * @param parent   The parent ViewGroup into which the new view will be added.
+     * @param parent The parent ViewGroup into which the new view will be added.
      * @param viewType The type of view to create.
      * @return A new ViewHolder instance.
      */
@@ -83,7 +83,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
     /**
      * Binds data to the TextViews in the ViewHolder at the specified position.
      *
-     * @param holder   The ViewHolder instance to bind data to.
+     * @param holder The ViewHolder instance to bind data to.
      * @param position The position in the list of data.
      */
     @Override

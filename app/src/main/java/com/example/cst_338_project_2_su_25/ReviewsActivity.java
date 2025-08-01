@@ -1,10 +1,7 @@
 package com.example.cst_338_project_2_su_25;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.RatingBar;
 import android.widget.Toast;
 
 
@@ -40,43 +37,29 @@ public class ReviewsActivity extends AppCompatActivity {
 
         newRating = getIntent().getFloatExtra("rating", 0);
 
-        binding.btnCancelAddMedia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
-                startActivity(intent);
-            }
+        binding.btnCancelAddMedia.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
+            startActivity(intent);
         });
 
         binding.mediaRatingBar.setRating(newRating);
         
-        binding.mediaRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                // 'rating' is the new rating value
-                newRating = rating;
-                // 'fromUser' indicates if the change was initiated by the user
-                Toast.makeText(ReviewsActivity.this, "Rating: " + rating, Toast.LENGTH_SHORT).show();
-            }
+        binding.mediaRatingBar.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+            // 'rating' is the new rating value
+            newRating = rating;
+            // 'fromUser' indicates if the change was initiated by the user
+            Toast.makeText(ReviewsActivity.this, "Rating: " + rating, Toast.LENGTH_SHORT).show();
         });
         
-        binding.btnSaveMediaTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getNewReviewInformation();
-                updateReview();
+        binding.btnSaveMediaTitle.setOnClickListener(v -> {
+            getNewReviewInformation();
+            updateReview();
 
-                Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
+            startActivity(intent);
         });
 
-        binding.btnDeleteReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createDialogBox();
-            }
-        });
+        binding.btnDeleteReview.setOnClickListener(v -> createDialogBox());
     }
 
     private void getNewReviewInformation() {
@@ -105,26 +88,18 @@ public class ReviewsActivity extends AppCompatActivity {
         builder.setMessage("Are you sure you want to proceed?");
         builder.setCancelable(false); // Prevents dismissal by tapping outside
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Review review = new Review();
-                review.setReviewId(getIntent().getIntExtra("reviewId", -1));
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            Review review = new Review();
+            review.setReviewId(getIntent().getIntExtra("reviewId", -1));
 
-                repository.deleteReview(review);
-                dialog.dismiss();
+            repository.deleteReview(review);
+            dialog.dismiss();
 
-                Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(getApplicationContext(), ReviewHistoryActivity.class);
+            startActivity(intent);
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

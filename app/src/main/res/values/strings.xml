@@ -59,4 +59,6 @@
     <string name="all_user_reviews">All User Reviews</string>
     <string name="back">BACK</string>
     <string name="back1">BACK</string>
+    <string name="Back">BACK</string>
+    <string name="no_favorites_yet">No favorites yet</string>
 </resources>

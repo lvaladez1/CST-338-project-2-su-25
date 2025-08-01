@@ -16,9 +16,7 @@ import com.example.cst_338_project_2_su_25.viewHolders.ReviewViewModel;
 import java.util.ArrayList;
 
 public class AdminViewReviewsActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
     private ReviewAdapter reviewAdapter;
-    private ReviewViewModel reviewViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +29,7 @@ public class AdminViewReviewsActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_admin_view_reviews);
 
-        recyclerView = findViewById(R.id.recyclerViewReviews);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewReviews);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Button backToMenuButton = findViewById(R.id.backToMenuButton);
@@ -43,10 +41,8 @@ public class AdminViewReviewsActivity extends AppCompatActivity {
 
         reviewAdapter = new ReviewAdapter(new ArrayList<>());
         recyclerView.setAdapter(reviewAdapter);
-        reviewViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
-        reviewViewModel.getAllReviews().observe(this, reviews -> {;
-            reviewAdapter.setReviews(reviews);
-        });
+        ReviewViewModel reviewViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
+        reviewViewModel.getAllReviews().observe(this, reviews -> reviewAdapter.setReviews(reviews));
 
     }
 }
