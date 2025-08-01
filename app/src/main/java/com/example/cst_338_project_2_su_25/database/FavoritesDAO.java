@@ -50,16 +50,13 @@ public interface FavoritesDAO {
     /**
      * Gets only the favorites of the given mediaType...tvShow or movie
      */
-    @Query(
-            "SELECT f.* " +
+    @Query("SELECT f.* " +
                     "FROM FAVORITES_TABLE AS f  " +
                     " JOIN MEDIA_TABLE AS m ON f.mediaTitleId = m.mediaTitleId " +
                     "WHERE f.userId = :userId  " +
                     "  AND m.type   = :mediaType " +
                     "ORDER BY f.favoritesId ASC")
-    LiveData<List<Favorites>> getFavoriteDisplayForUserByType(
-            int userId,
-            String mediaType);
+    LiveData<List<Favorites>> getFavoriteDisplayForUserByType(int userId, String mediaType);
 
     @Query("SELECT mediaTitleId FROM favorites_table WHERE userId = :userId")
     LiveData<List<Integer>> getFavoriteMediaIdsForUser(int userId);
