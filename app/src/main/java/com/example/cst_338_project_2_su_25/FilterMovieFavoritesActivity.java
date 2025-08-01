@@ -1,0 +1,14 @@
+package com.example.cst_338_project_2_su_25;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FilterMovieFavoritesActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_filter_movies);
+    }
+}

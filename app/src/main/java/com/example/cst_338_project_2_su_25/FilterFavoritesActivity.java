@@ -3,6 +3,7 @@ package com.example.cst_338_project_2_su_25;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,6 +24,21 @@ public class FilterFavoritesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_favorites);
+
+        Button tvButton    = findViewById(R.id.btnFilterTvFavorites);
+        Button movieButton = findViewById(R.id.btnFilterMovieFavorites);
+
+        // when TV Shows button is tapped, go to the tv show filter screen
+        tvButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, FilterTvShowFavoritesActivity.class);
+            startActivity(i);
+        });
+
+        // when Movies button is tapped, go to the movie filter screen
+        movieButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, FilterMovieFavoritesActivity.class);
+            startActivity(i);
+        });
     }
 
     static Intent FilterFavoritesActivityIntentFactory(Context context) {

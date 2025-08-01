@@ -37,6 +37,8 @@
         <activity android:name=".ReviewsActivity"
             android:exported="false"/>
         <activity android:name=".AdminViewReviewsActivity"/>
+        <activity android:name=".FilterTvShowFavoritesActivity"/>
+        <activity android:name=".FilterMovieFavoritesActivity"/>
     </application>
 
 </manifest>
