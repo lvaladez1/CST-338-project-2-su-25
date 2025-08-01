@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.databinding.ActivityDisplayFavoritesBinding;
+import com.example.cst_338_project_2_su_25.FilterFavoritesActivity;
 import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
 
 /**
@@ -62,6 +63,11 @@ public class FavoritesActivity extends AppCompatActivity {
                     binding.emptyFavoritesMessage.setVisibility(empty ? View.VISIBLE : View.GONE);
                     binding.favoritesRecyclerView.setVisibility(empty ? View.GONE : View.VISIBLE);
                 });
+
+        // Handles a click event where Filter button goes to FilterFavoritesActivity
+        binding.btnFilterFavorites.setOnClickListener(v ->
+                startActivity(FilterFavoritesActivity.FilterFavoritesActivityIntentFactory(this))
+        );
 
         // Handles a click event for floating action button to return to the main activity
         binding.backToLoginFAB.setOnClickListener(v ->
