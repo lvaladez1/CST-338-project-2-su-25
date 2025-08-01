@@ -10,7 +10,6 @@
         android:layout_width="422dp"
         android:layout_height="70dp"
         android:gravity="center"
-
         android:background="@android:color/holo_red_dark"
         android:textColor="@color/white"
         android:text="@string/favorites"
@@ -20,15 +19,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnFilterFavorites"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/emptyFavoritesMessage"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:text="@string/filter_here"
-        app:layout_constraintTop_toBottomOf="@id/favoritesRecyclerView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="40dp" />
+        android:visibility="gone"
+        android:text="@string/no_favorites_yet"
+        android:textSize="20sp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/viewFavorites"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/favoritesRecyclerView"
+        android:layout_margin="16dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoritesRecyclerView"
@@ -41,12 +44,22 @@
         app:layout_constraintTop_toBottomOf="@id/viewFavorites"
         tools:listitem="@layout/favorites_recycler_item" />
 
+    <Button
+        android:id="@+id/btnFilterFavorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="@string/filter_here"
+        app:layout_constraintTop_toBottomOf="@id/favoritesRecyclerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="40dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
-        android:text="BACK"
+        android:text="@string/Back"
         android:textSize="26sp"
         app:layout_constraintEnd_toStartOf="@id/backToLoginFAB"
         app:layout_constraintTop_toBottomOf="@id/btnFilterFavorites" />
@@ -62,6 +75,5 @@
         app:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnFilterFavorites" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
