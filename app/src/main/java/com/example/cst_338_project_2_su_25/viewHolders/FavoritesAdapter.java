@@ -8,12 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.cst_338_project_2_su_25.DisplayFavoritesActivity;
 import com.example.cst_338_project_2_su_25.R;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
-import com.example.cst_338_project_2_su_25.database.MediaTitleDAO;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
-import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +22,6 @@ import java.util.List;
 public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.ViewHolder> {
 
     private final List<Favorites> favoriteList = new ArrayList<>();
-
-    private FavoritesDAO favoritesDAO;
     Favorites fav;
 
     /**
