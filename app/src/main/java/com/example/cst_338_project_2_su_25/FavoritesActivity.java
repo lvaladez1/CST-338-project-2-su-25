@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.database.RevuDatabase;
 import com.example.cst_338_project_2_su_25.databinding.ActivityDisplayFavoritesBinding;
-import com.example.cst_338_project_2_su_25.FilterFavoritesActivity;
 import com.example.cst_338_project_2_su_25.viewHolders.FavoritesAdapter;
 
 /**

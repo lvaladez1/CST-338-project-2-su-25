@@ -7,7 +7,6 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.cst_338_project_2_su_25.DisplayFavoritesActivity;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 
 import java.util.List;
