@@ -39,6 +39,10 @@ public class Review {
         return reviewId;
     }
 
+    public int getMediaTitleId() {
+        return mediaTitleId;
+    }
+
     public void setReviewId(int reviewId) {
         this.reviewId = reviewId;
     }

@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
-
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 import com.example.cst_338_project_2_su_25.entities.MediaTitle;
 import com.example.cst_338_project_2_su_25.entities.Review;
@@ -79,6 +78,28 @@ public class RevuRepository {
        }
    }
 
+    /**
+     * Deletes a MediaTitle from the DB.
+     * @param mediaTitle The media title to be deleted from the database.
+     */
+    public void deleteMediaTitle(MediaTitle mediaTitle) {
+        Executors.newSingleThreadExecutor().execute(() -> mediaTitleDAO.delete(mediaTitle));
+    }
+
+    /**
+     * Searches for a MediaTitle by its ID and if found
+     * MediaTitle gets deleted from the DB.
+     * @param mediaTitleId The ID used to find the specific media title.
+     */
+    public void deleteMediaTitleById(int mediaTitleId) {
+        executorService.execute(() -> {
+            MediaTitle mediaTitle = mediaTitleDAO.getMediaTitleById(mediaTitleId);
+            if (mediaTitle != null) {
+                mediaTitleDAO.delete(mediaTitle);
+            }
+        });
+    }
+
     public void insertReview(Review review) {
         Executors.newSingleThreadExecutor().execute(() -> reviewDao.insert(review));
     }
@@ -132,10 +153,8 @@ public class RevuRepository {
     }
 
 
-    public MediaTitle getMediaTitleById ( int mediaTitleId){
-
+    public MediaTitle getMediaTitleById (int mediaTitleId){
         return mediaTitleDAO.getMediaTitleById(mediaTitleId);
-
     }
 
     public LiveData<List<Favorites>> getFavoriteDisplayForUser(int userId) {
