@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -88,5 +89,9 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    static Intent loginIntentFactory(Context context) {
+        return new Intent(context, LoginActivity.class);
     }
 }

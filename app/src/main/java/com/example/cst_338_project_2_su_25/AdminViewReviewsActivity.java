@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -44,5 +45,8 @@ public class AdminViewReviewsActivity extends AppCompatActivity {
         ReviewViewModel reviewViewModel = new ViewModelProvider(this).get(ReviewViewModel.class);
         reviewViewModel.getAllReviews().observe(this, reviews -> reviewAdapter.setReviews(reviews));
 
+    }
+    static Intent adminViewReviewsIntentFactory(Context context) {
+        return new Intent(context, AdminViewReviewsActivity.class);
     }
 }

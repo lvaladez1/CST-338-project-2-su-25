@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -106,5 +107,9 @@ public class ReviewsActivity extends AppCompatActivity {
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    static Intent reviewsIntentFactory(Context context) {
+        return new Intent(context, ReviewsActivity.class);
     }
 }
