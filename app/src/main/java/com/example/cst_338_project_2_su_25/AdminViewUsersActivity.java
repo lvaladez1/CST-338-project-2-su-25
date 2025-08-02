@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -62,5 +63,8 @@ public class AdminViewUsersActivity extends AppCompatActivity {
                 });
             });
         });
+    }
+    static Intent adminViewUsersIntentFactory(Context context) {
+        return new Intent(context, AdminViewUsersActivity.class);
     }
 }

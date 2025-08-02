@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -68,5 +69,9 @@ public class SignUpActivity extends AppCompatActivity {
             startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             finish();
         });
+    }
+
+    static Intent signUpaIntentFactory(Context context) {
+        return new Intent(context, SignUpActivity.class);
     }
 }

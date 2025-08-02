@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,5 +50,9 @@ public class ReviewHistoryActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         });
+    }
+
+    static Intent reviewHistoryIntentFactory(Context context) {
+        return new Intent(context, ReviewHistoryActivity.class);
     }
 }
