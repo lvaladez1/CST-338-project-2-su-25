@@ -2,11 +2,12 @@ package com.example.cst_338_project_2_su_25;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.intent.Intents.intended;
-import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isChecked;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
-import static org.junit.Assert.assertTrue;
+
+import static org.hamcrest.core.IsNot.not;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.intent.Intents;
@@ -41,12 +42,10 @@ public class AddMediaActivityTest {
     }
 
     @Test
-    public void testCancelNavigatesBack() {
-        ActivityScenario<AddMediaActivity> scenario = ActivityScenario.launch(AddMediaActivity.class);
-        onView(withId(R.id.btnCancelAddMedia)).perform(click());
-        scenario.onActivity(activity -> {
-            // Verify that the activity finishes and returns to the previous screen
-            assertTrue(activity.isFinishing());
-        });
+    public void testAddToFavoritesButton() {
+        ActivityScenario.launch(AddMediaActivity.class);
+        onView(withId(R.id.buttonAddToFavorites)).check(matches(not(isChecked())));
+        onView(withId(R.id.buttonAddToFavorites)).perform(click());
+        onView(withId(R.id.buttonAddToFavorites)).check(matches(isChecked()));
     }
 }
