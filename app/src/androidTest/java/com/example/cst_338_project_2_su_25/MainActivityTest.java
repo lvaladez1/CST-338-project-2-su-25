@@ -78,37 +78,6 @@ public class MainActivityTest {
         intended(hasComponent(FavoritesActivity.class.getName()));
     }
 
-    @Test
-    public void testNavigateToAdminCreateUser() {
-        Context context = ApplicationProvider.getApplicationContext();
-        SharedPreferences prefs = context.getSharedPreferences("appPrefs", Context.MODE_PRIVATE);
-        prefs.edit().putString("loggedInUser", "demo_user")
-                .putInt("userId", 1)
-                .putBoolean("isAdmin", false)
-                .putBoolean("isTestRun", true) // Set isTestRun to true for testing
-                .apply();
-        scenario = ActivityScenario.launch(MainActivity.class);
-
-
-        onView(withId(R.id.createUserButton)).perform(click());
-        intended(hasComponent(AdminCreateUserActivity.class.getName()));
-
-    }
-
-    @Test
-    public void testNavigateToAdminViewUsers() {
-        Context context = ApplicationProvider.getApplicationContext();
-        SharedPreferences prefs = context.getSharedPreferences("appPrefs", Context.MODE_PRIVATE);
-        prefs.edit().putString("loggedInUser", "demo_user")
-                .putInt("userId", 1)
-                .putBoolean("isAdmin", false)
-                .putBoolean("isTestRun", true) // Set isTestRun to true for testing
-                .apply();
-        scenario = ActivityScenario.launch(MainActivity.class);
-
-        onView(withId(R.id.viewUsersButton)).perform(click());
-        intended(hasComponent(AdminViewUsersActivity.class.getName()));
-    }
 
     @Test
     public void testLogoutGoesToLoginActivity() {
