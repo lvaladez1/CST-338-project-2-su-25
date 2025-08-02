@@ -56,7 +56,6 @@ public class Favorites {
         this.title = title;
     }
 
-
     public int getUserId() {
         return userId;
     }

@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25.viewHolders;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cst_338_project_2_su_25.R;
-import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
 import com.example.cst_338_project_2_su_25.entities.Favorites;
 
 import java.util.ArrayList;
@@ -35,6 +35,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
      *
      * @param newFavorites A list of Favorites objects to display.
      */
+    @SuppressLint("NotifyDataSetChanged")
     public void setFavorites(List<Favorites> newFavorites) {
         favoriteList.clear();
         if (newFavorites != null) {
@@ -81,6 +82,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.View
      * @param holder The ViewHolder instance to bind data to.
      * @param position The position in the list of data.
      */
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         fav = favoriteList.get(position);

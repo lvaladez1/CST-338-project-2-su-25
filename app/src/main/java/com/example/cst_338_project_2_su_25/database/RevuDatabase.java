@@ -16,10 +16,8 @@ import java.util.concurrent.Executors;
 
 @Database(entities = {User.class, Favorites.class, MediaTitle.class, Review.class}, version = 21, exportSchema = false)
 public abstract class RevuDatabase extends RoomDatabase{
-    public static final String USERS_TABLE = "USER";
     public static final String MEDIA_TABLE = "MEDIA_TABLE";
     public static final String FAVORITES_TABLE = "FAVORITES_TABLE";
-    public static final String REVIEWS_TABLE = "Review";
     private static final String DATABASE_NAME = "Revudatabase";
     private static volatile RevuDatabase INSTANCE;
 
@@ -50,7 +48,5 @@ public abstract class RevuDatabase extends RoomDatabase{
     public abstract MediaTitleDAO mediaTitleDAO();
 
     public abstract ReviewDao reviewDao();
-
-
 
 }
