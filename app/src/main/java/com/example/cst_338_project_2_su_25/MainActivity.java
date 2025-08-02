@@ -1,5 +1,6 @@
 package com.example.cst_338_project_2_su_25;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -186,7 +187,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+    }
 
-
+    static Intent mainActivityIntentFactory(Context context) {
+        return new Intent(context, MainActivity.class);
     }
 }

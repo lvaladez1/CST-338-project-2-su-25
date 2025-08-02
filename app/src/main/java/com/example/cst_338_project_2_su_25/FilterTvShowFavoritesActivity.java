@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.cst_338_project_2_su_25.database.FavoritesDAO;
@@ -35,5 +37,9 @@ public class FilterTvShowFavoritesActivity extends AppCompatActivity {
                     // this will clear and repopulate the adapter with only the TV show favorites
                     adapter.setFavorites(list);
                 });
+    }
+
+    static Intent filterTvShowFavoritesIntentFactory(Context context) {
+        return new Intent(context, FilterTvShowFavoritesActivity.class);
     }
 }
