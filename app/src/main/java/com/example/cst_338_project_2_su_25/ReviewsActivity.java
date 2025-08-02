@@ -65,7 +65,6 @@ public class ReviewsActivity extends AppCompatActivity {
     private void getNewReviewInformation() {
         reviewId = getIntent().getIntExtra("reviewId", -1);
         mediaTitleId = getIntent().getIntExtra("mediaTitleId", -1);
-        Toast.makeText(ReviewsActivity.this, "mediaTitleId: " + mediaTitleId, Toast.LENGTH_SHORT).show();
         userId = getIntent().getIntExtra("userId", -1);
         title = getIntent().getStringExtra("reviewTitle");
         type = getIntent().getStringExtra("type");
@@ -80,6 +79,7 @@ public class ReviewsActivity extends AppCompatActivity {
 
         Review review = new Review(userId, title, type, newRating, reviewText, isFavorite);
         review.setReviewId(reviewId);
+        review.setMediaTitleId(mediaTitleId);
 
         repository.updateReview(review);
     }
