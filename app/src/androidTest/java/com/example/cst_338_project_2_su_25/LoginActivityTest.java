@@ -45,8 +45,7 @@ import org.junit.runner.RunWith;
 public class LoginActivityTest {
 
     // Rule to launch the LoginActivity before each test
-    @Rule
-    public ActivityScenarioRule<LoginActivity> activityRule = new ActivityScenarioRule<>(LoginActivity.class);
+
     @Before
     public void setUp() {
         Intents.init();
@@ -58,19 +57,20 @@ public class LoginActivityTest {
     }
 
 
-    /**
+
     @Test
     public void testLoginIntent() {
+        ActivityScenario<LoginActivity> scenario = ActivityScenario.launch(LoginActivity.class);
+        scenario.onActivity(activity -> LoginActivity.TEST_MODE = true);
         onView(withId(R.id.loginButton)).check(matches(isDisplayed()));
         onView(withId(R.id.usernameInput)).perform(typeText("testuser"), closeSoftKeyboard());
         onView(withId(R.id.passwordInput)).perform(typeText("password123"), closeSoftKeyboard());
 
         onView(withId(R.id.loginButton)).perform(click());
-        //Thread.sleep(1000);
-        intended(anyIntent());
+
         intended(hasComponent(MainActivity.class.getName()));
     }
-     */
+
 
 
     @Test

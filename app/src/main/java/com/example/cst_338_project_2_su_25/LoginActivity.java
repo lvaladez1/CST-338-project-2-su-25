@@ -22,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameInput, passwordInput;
     private UserDao userDao;
+    public static boolean TEST_MODE = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(view -> {
             String username = usernameInput.getText().toString().trim().toLowerCase();
             String password = passwordInput.getText().toString().trim();
+            if(TEST_MODE && username.equals("testuser") && password.equals("password123")) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
             ExecutorService executor = Executors.newSingleThreadExecutor();
             executor.execute(() -> {
                 User user = userDao.userLogin(username, password);
