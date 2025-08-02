@@ -39,6 +39,14 @@ public interface FavoritesDAO {
     @Query("SELECT * FROM FAVORITES_TABLE WHERE userId = :userId")
     LiveData<List<Favorites>> getFavoritesForUser(int userId);
 
+    /**
+     * Returns a LiveData list of favorites for the given user,
+     * listed with the username and the media title.
+     *
+     * @param userId the ID of the user whose favorites are returned
+     * @return a LiveData list of Favorites objects, populated with
+     * the username and media title
+     */
     @Query("SELECT f.*, u.username AS username, m.title AS title " +
             "FROM FAVORITES_TABLE AS f " +
             "JOIN USER AS u ON f.userId = u.userId " +
@@ -58,6 +66,12 @@ public interface FavoritesDAO {
                     "ORDER BY f.favoritesId ASC")
     LiveData<List<Favorites>> getFavoriteDisplayForUserByType(int userId, String mediaType);
 
+    /**
+     * Returns a LiveData list of mediaTitleIds user has marked as favorites.
+     *
+     * @param userId the ID of the user whose favorite media IDs are retrieved
+     * @return a LiveData list of Integer IDs of the user’s favorite media titles
+     */
     @Query("SELECT mediaTitleId FROM favorites_table WHERE userId = :userId")
     LiveData<List<Integer>> getFavoriteMediaIdsForUser(int userId);
 
